@@ -1,0 +1,166 @@
+---
+output: pdf_document
+---
+
+## Abstract
+
+
+
+
+The idea of this project is to perform a predictive modeling process applied on the data set Credit. The data set is described in page 83, and available as a CSV file at: 
+
+The idea of this project is to perform a predictive modeling process applied on the Credit data set. [DESCRIBE DATA SET]. This data is freely available at available as a CSV file at. The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at [INSERT URL] .
+
+
+
+## Introduction
+
+mirror below
+Given a data set containing information pertaining to both sales and advertising budget, how could one develop a marketing plan that would result in higher product sales?
+
+We will answer thi question via a predictive modeling process that includes [DESCRIBE PROJECT LAYOUT]
+
+To achieve this goal, the following paper will discuss everal different regression methods used in the predictive modeling process. The s pecific methods discussed are: [INSERT METHODS]. Each method will be discussed and applied separately to the Credit data. More information regarding these methods is available in sections 6.2, 6.3, 6.6, and 6.7 of chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al).
+
+pertaining to  how improving sales via multiple linear regression can be implemented. We will attempt to model the sales of a particular product as a function of advertising budget for three types of media: TV, radio, and newspaper. Because we are modelling this relationship via linear regression, we are inherently assuming that a linear relationship exists between our dependent variables and independent variable. We will run a total of four regressions: one for each of the sale + predictor combinations, and one where we regress sales on all three predictors.
+
+
+## Data
+
+mirror everything below
+
+The data set utilized in this paper, __Advertising.csv__, contains 200 observations of 5 variables. Four of the variables are of general interest: __Sales__, __TV__, __Radio__, and __Newspaper__. The fifth variable, __X__, is an index.
+
+This dataset is free to access online at the following url [URL]. Alternatively, you can visit the author's GitHub repository [My Github Account](http://www.github.com/jwilber) to access it as well.
+
+For this paper, we will use the following variables: __Sales__, __Radio__, _Newspaper__, and __TV__. __Sales__ refers to the number (in thousands) of a particular product's sales in 200 different markets. The other three variables correspond to advertising budget for each medium (in the thousands of $)
+
+In our analysis, we will treat __Sales__ as the dependent variable and __TV__, __Radio__, and __Newspaper__ as the independent variables.
+
+
+
+
+# Methods
+
+6.2 Shrinkage Methods:
+  1. Ridge Regression
+  2. Lasso
+  3. Ridge vs Lasso
+  4. Special case
+  5. Selecting parameter
+6,3
+  1. Principal Components Regression
+    1.1 PCA
+    1.2 Regression on PCA
+  2. Partial Least Squares
+  
+  
+  
+# 6,2
+  
+  we can fit a model containing all p predictors using a technique
+that constrains or regularizes the coefficient estimates, or equivalently, that
+shrinks the coefficient estimates towards zero. It may not be immediately
+6.2 Shrinkage Methods 215
+obvious why such a constraint should improve the fit, but it turns out that
+shrinking the coefficient estimates can significantly reduce their variance.
+The two best-known techniques for shrinking th
+
+The first class of techniques we will discuss fall into the domain of so-called "shrinkage" methods. These are techniques that allow us to fit a model with all $p$ predictors via a regularization method that _shrinks_ the coefficient estimates towards zero.
+We will discuss two regularization methods: _ridge regression_ and the _lasso_.
+
+### Ridge Regression
+
+Ridge regresion builds heavily off original least squares regression, which takes the following form
+
+$ Insert Latex Equation $
+
+In ridge regression, we add a _regularization_ parameter to this equation as follows:
+
+$ Insert Latex Equation: Ridge Regression $
+  
+This is the new equation that we minimize to find our coefficients. In effect, thi quantity allows our regression model to predict observations that have more generalizability. This equation can be broken down a follow:
+
+$ RSS + other part $
+
+As with OLS, the above minimization equation hope to find the $\beta$ coefficients that best fit the data. The additional parameter, the $\lambda$ paramater, i known as the _shrinkage_ parameter. It becomes small when the $\beta$ coefficients are almost zero, hence the term _shrinkage_. To control the relative impact each of the two term in our new model has on our coefficient estimates, we use the parameter $\lambda$. When $\lambda = 0$, our equation simplifies to the original $RSS$. When $\lambda to inf$, the impact of the shrinkage parameter gets stronger, making our coefficient approach 0. Thus, our coefficient estimates vary as we tweak $\lambda$. Note, also, that this shrinkage parameter is not applied to our intercept term, as the goal of the minimization is to shrink the association between our predictors and the response.
+
+So why is any of this important? Why don't we just continue employing original least squares for analysis if it works? The primary advantage of ridge regression over least squares is a result of the bias-variance trade-off, which plays into ridge regression as follows: increasing $\lamba$ decreases the variance of our model but increases the bias. Decreasing $\lamba$ increases the variance while decreasing the variance. Because original least squares uses $\lambda = 0$, it has a high variance with no bias. Therefore, at the expense of a slight increase in bias we can substantially reduce the the variance in the predictions. This shrinking of coefficient values disallows the opportunity for one predictor to have too strong an effect on our model. This helps to curb overfitting and leads to a more accurate, generalizable model.
+
+Additionally, least squares estimates is a very poor strategy for the case when the number of features is greater than the number of observations ($p > n$), whereas ridge will still perform well by trading variance for bias. Ridge regression is also more computationally efficient than subset selection methods, as only a single model fit is necessary.
+
+
+### LASSO
+
+_Least Absolute Shrinkage and Selector Operator_, more commonly known as _LASSO_, is a regression method similar to ridge regression. The primary difference between LASSO and ridge is that LASSO will actually shrink some coefficients down to zero, while a ridge regression model fit with p predictors will maintain all p predictors. In this way, LASSO often results in a smaller model than ridge regression and can be looked at as a feature selection method. LASSO gets this property because of its choice of penalty:
+
+INSERT LATEX EQUATION
+
+In fact, the only difference between ridge and LASSO is the norm choice in the regularization term. While ridge shrink the coefficients towards zero, no coefficients actually achieve a quantity of zero. On the other hand, coefficients in LASSO will beceome zero, resulting in a much more concise  and interpretable model. Technically speaking, we say that LASSO yields a sparse model (a model with only a subset of variable).
+
+
+
+Both ridge regression and LASSO rely on the parameter $\lambda$.
+Clearly, then, our choice of $\lambda$ is very important for a robust analysis - so how do we choose it? For this analysis, we'll use cross-validation, a common re-sampling technique wherein which we determine a model performance based on multiple iterations of dividing our training data into folds of training and test sets. We'll pick the value of $\lambda$ that results in the lowest error.
+
+
+  
+  
+  
+# Principal Components regression (PCR)
+
+The third method of our analysis is principal components regression, which is a popular approach to obtain a low dimensional feature set from a dataset with a high number of dimensions. Principal components regression works by first performing principal compnonents analysis (PCA) on the data, then performing a regression on the obtained principal component features.
+
+Recall, PCA is a dimensionality reduction technique that creates a new, uncorrelated feature set where each variable is a linear combination of variables in the previous dimension. Furthermore, the principal components are ordered by the amount of variance captured, so choosing the number of features to use is as easy as setting a threshold for captured variance and picking the number of components corresponding to that much captured variance.
+
+Principal components regression is a straightforward application from PCA: we construct a dataset with _k_ chosen principal components and use them as feature/predictors in linear regression model. We then fit said model with least squares. The idea behind this analysis is that the principal components are often sufficient enough to explain the majority of the variability in the data while also capturing the relationhip between the predictors (principal components) and the response. It should be mentioned that it is not always the case that our components hold an associataion between the predictors and response, but it is often the case. 
+
+A benefit of principal components regression is that it often has better results than original least squares. Moreover, because we estimate a smaller number of coefficients, we are far less prone to overfitting. That said, principal components regression lacks in that its results lack interpretability; knowing how the response changes given some combination of all of our predictor is hardly intuitive. 
+
+Prior to performing PCR, predictors should be standardized, otherwise high-variance variables will play a larger role than warranted.
+
+
+
+# Partial Least Squares (PLS)
+
+Partial least squares regression is a regression technique that attempts to overcome the shortcomings of PCA regression. It is very similar to PCA regression but addresses the problem inherent to PCA regression of using prinicipal components that are possibly not related to the response value. In this way, PLS regresion can be viewed as the supervised alternative to the unsupervised PCA regression.
+
+As with PCA regression, PLS regression first reduces the dimensions of the data by creating linear combinations of the dataset's features. However, PLS regression identifies the features in a supervised manner wherein which the response value is utilized in such a way that our newly created features are related to the response; i.e. the PLS method finds directions that explain both the response and the predictors.
+
+
+In PLS, we directly utilize the simple regression coefficient for each variable, as this coefficient is proportionally correlated to the response value. For this reason, PLS will place the highest weight on variables that are most strongly related to the response value. We continue selecting directions by iteratviely carrying out the following procedure: regress each variable on the former direction, then use the residuals to find the next direction.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Analysis
+  6.6
+  6.7
+# Results
+  List results of analyis
+
+
+# Conclusion
