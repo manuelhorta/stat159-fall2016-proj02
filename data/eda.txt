@@ -1,0 +1,132 @@
+[1] "Summary of Quantitative Variables"
+[1] "Mean"
+    Income      Limit     Rating      Cards        Age  Education    Balance 
+  45.21889 4735.60000  354.94000    2.95750   55.66750   13.45000  520.01500 
+[1] "Standard Deviation"
+     Income       Limit      Rating       Cards         Age   Education     Balance 
+  35.244273 2308.198848  154.724143    1.371275   17.249807    3.125207  459.758877 
+[1] "Mean, Median, 1st and 3rd Quartile, Min, Max"
+        Income Limit Rating Cards   Age Education Balance
+Min.     10.35   855   93.0 1.000 23.00      5.00    0.00
+1st Qu.  21.01  3088  247.2 2.000 41.75     11.00   68.75
+Median   33.12  4622  344.0 3.000 56.00     14.00  459.50
+Mean     45.22  4736  354.9 2.958 55.67     13.45  520.00
+3rd Qu.  57.47  5873  437.2 4.000 70.00     16.00  863.00
+Max.    186.60 13910  982.0 9.000 98.00     20.00 1999.00
+[1] "Range"
+      Income Limit Rating Cards Age Education Balance
+[1,]  10.354   855     93     1  23         5       0
+[2,] 186.634 13913    982     9  98        20    1999
+[1] "IQR"
+   Income     Limit    Rating     Cards       Age Education   Balance 
+  36.4635 2784.7500  190.0000    2.0000   28.2500    5.0000  794.2500 
+[1] "Summary of Qualitative Variables"
+[1] "Frequency Tables"
+[1] "1. Gender"
+
+  Male Female 
+   193    207 
+[1] "2. Student"
+
+ No Yes 
+360  40 
+[1] "3. Married"
+
+ No Yes 
+155 245 
+[1] "4. Ethnicity"
+
+African American            Asian        Caucasian 
+              99              102              199 
+[1] "Relative Frequency Tables"
+[1] "1. Gender"
+
+  Male Female 
+0.4825 0.5175 
+[1] "2. Student"
+
+ No Yes 
+0.9 0.1 
+[1] "3. Married"
+
+    No    Yes 
+0.3875 0.6125 
+[1] "4. Ethnicity"
+
+African American            Asian        Caucasian 
+          0.2475           0.2550           0.4975 
+[1] "Matrix of Correlations for Quantitative Variables"
+               Income       Limit      Rating       Cards         Age    Education
+Income     1.00000000  0.79208834  0.79137763 -0.01827261 0.175338403 -0.027691982
+Limit      0.79208834  1.00000000  0.99687974  0.01023133 0.100887922 -0.023548534
+Rating     0.79137763  0.99687974  1.00000000  0.05323903 0.103164996 -0.030135627
+Cards     -0.01827261  0.01023133  0.05323903  1.00000000 0.042948288 -0.051084217
+Age        0.17533840  0.10088792  0.10316500  0.04294829 1.000000000  0.003619285
+Education -0.02769198 -0.02354853 -0.03013563 -0.05108422 0.003619285  1.000000000
+[1] "ANOVA between Balance and ..."
+[1] "1. Income"
+Call:
+   aov(formula = Balance ~ Income, data = Credit)
+
+Terms:
+                  Income Residuals
+Sum of Squares  18131167  66208745
+Deg. of Freedom        1       398
+
+Residual standard error: 407.8647
+Estimated effects may be unbalanced
+[1] "2. Limit"
+Call:
+   aov(formula = Balance ~ Limit, data = Credit)
+
+Terms:
+                   Limit Residuals
+Sum of Squares  62624255  21715657
+Deg. of Freedom        1       398
+
+Residual standard error: 233.585
+Estimated effects may be unbalanced
+[1] "3. Rating"
+Call:
+   aov(formula = Balance ~ Rating, data = Credit)
+
+Terms:
+                  Rating Residuals
+Sum of Squares  62904790  21435122
+Deg. of Freedom        1       398
+
+Residual standard error: 232.0713
+Estimated effects may be unbalanced
+[1] "4. Cards"
+Call:
+   aov(formula = Balance ~ Cards, data = Credit)
+
+Terms:
+                   Cards Residuals
+Sum of Squares    630416  83709496
+Deg. of Freedom        1       398
+
+Residual standard error: 458.6124
+Estimated effects may be unbalanced
+[1] "5. Age"
+Call:
+   aov(formula = Balance ~ Age, data = Credit)
+
+Terms:
+                     Age Residuals
+Sum of Squares       284  84339628
+Deg. of Freedom        1       398
+
+Residual standard error: 460.3353
+Estimated effects may be unbalanced
+[1] "6. Education"
+Call:
+   aov(formula = Balance ~ Education, data = Credit)
+
+Terms:
+                Education Residuals
+Sum of Squares       5481  84334431
+Deg. of Freedom         1       398
+
+Residual standard error: 460.3211
+Estimated effects may be unbalanced
