@@ -58,6 +58,10 @@ pls_sum_full <- summary(pls.fit.full)
 save(pls_sum_full, file="pls_full_summary.RData")
 
 message("PLS Script Finished Running")
+<<<<<<< HEAD
 # end script
+=======
+# end 
+>>>>>>> pls
 
 
