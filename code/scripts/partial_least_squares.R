@@ -6,7 +6,7 @@
 # -------------------------------------------
 # -------------------------------------------
 
-
+message("Begin PLS Script")
 library(pls)
 
 source("code/scripts/data-preprocess.R")
@@ -24,7 +24,7 @@ summary(pls.fit)
 # Find number of components with best fit
 # -------------------------------------------
 best_mod_comp <- which.min(pls.fit$validation$PRESS) # 5
-save(best_mod_comp, "data/pls_best_model_component.RData")
+save(best_mod_comp, file = "data/pls_best_model_component.RData")
 
 # -------------------------------------------
 # Plot
@@ -45,7 +45,7 @@ pls.pred = predict(pls.fit,
 # MSE
 # -------------------------------------------
 pls_mse <- mean((pls.pred - credit_test[,12])^2)
-save(pls_mse, "data/pls_mse.RData")
+save(pls_mse, file = "data/pls_mse.RData")
 
 # -------------------------------------------
 # Refit on full dataset
@@ -58,10 +58,6 @@ pls_sum_full <- summary(pls.fit.full)
 save(pls_sum_full, file="pls_full_summary.RData")
 
 message("PLS Script Finished Running")
-<<<<<<< HEAD
-# end script
-=======
-# end 
->>>>>>> pls
+# end
 
 

@@ -15,6 +15,9 @@ preproc: data code/scripts
 pcr: preproc
 	Rscript -e 'source("code/scripts/pca_regression.R")'
 
+pls: preproc
+	Rscript -e 'source("code/scripts/partial_least_squares.R")'
+
 
 
 
