@@ -60,7 +60,11 @@ pcr_sum_full <- summary(pcr.fit.full)
 save(pcr_sum_full, file="pcr_full_summary.RData")
 
 message("PCR Script Finished Running")
+<<<<<<< HEAD
 # end script
+=======
+# end
+>>>>>>> pcr
 
 
 
