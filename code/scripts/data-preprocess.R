@@ -41,4 +41,5 @@ train_indices <- sample(1:400,300)
 credit_train <- scaled_credit[train_indices,]
 credit_test  <- scaled_credit[-train_indices,]
 
+message("Data Preprocessing Complete")
 # Now, to access the data, just call source("code/scripts/data-preprocess.R")

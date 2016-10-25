@@ -6,7 +6,7 @@
 # -------------------------------------------
 # -------------------------------------------
 
-
+message("Running pca script")
 library(pls)
 
 source("code/scripts/data-preprocess.R")
@@ -26,7 +26,7 @@ summary(pcr.fit)
 # Find number of components with best fit
 # -------------------------------------------
 best_mod_comp_pcr <- which.min(pcr.fit$validation$PRESS) # 10
-save(best_mod_comp_pcr, "data/pcr_best_model_component.RData")
+save(best_mod_comp_pcr, file = "data/pcr_best_model_component.RData")
 
 # -------------------------------------------
 # Plot
@@ -47,7 +47,7 @@ pcr.pred = predict(pcr.fit,
 # MSE
 # -------------------------------------------
 pcr_mse <- mean((pcr.pred - credit_test[,12])^2)
-save(pcr_mse, "data/pcr_mse.RData")
+save(pcr_mse, file = "data/pcr_mse.RData")
 
 # -------------------------------------------
 # Refit on full dataset
@@ -57,14 +57,10 @@ pcr.fit.full <- pcr(Balance ~ .,
                      scale = FALSE, 
                      ncomp = best_mod_comp_pcr)
 pcr_sum_full <- summary(pcr.fit.full)
-save(pcr_sum_full, file="pcr_full_summary.RData")
+save(pcr_sum_full, file = "pcr_full_summary.RData")
 
 message("PCR Script Finished Running")
-<<<<<<< HEAD
-# end script
-=======
-# end
->>>>>>> pcr
+
 
 
 
