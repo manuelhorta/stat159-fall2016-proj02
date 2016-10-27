@@ -19,7 +19,7 @@ set.seed(1)
 # -------------------------------------------
 # 1) Load in credit data
 # -------------------------------------------
-setwd("c:/users/manue/Desktop/stat159/stat159-fall2016-proj02")
+setwd("~/../Desktop/stat159/stat159-fall2016-proj02")
 credit <- read.csv("data/Credit.csv")
 credit <- credit[,c(2:12)]
 
@@ -33,7 +33,6 @@ new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
 # 3) Mean centering and standardizing
 # -------------------------------------------
 scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
-write.csv(scaled_credit, file = "data/scaled-credit.csv")
 
 # -------------------------------------------
 # 4) Train/Test sets
