@@ -19,7 +19,7 @@ set.seed(1)
 # -------------------------------------------
 # 1) Load in credit data
 # -------------------------------------------
-setwd("c:/users/manue/Desktop/stat159/stat159-fall2016-proj02")
+#setwd("c:/users/manue/Desktop/stat159/stat159-fall2016-proj02")
 credit <- read.csv("data/Credit.csv")
 credit <- credit[,c(2:12)]
 
