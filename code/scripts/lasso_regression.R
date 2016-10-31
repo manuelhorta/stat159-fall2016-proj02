@@ -55,7 +55,7 @@ lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_cr
 
 save(lasso_mod, lasso_best_mod, lasso_mse, lasso_fit_full, lasso_pred_full, file = 'data/lasso-saved-objects.Rdata')
 
-sink('lasso-results.txt')
+sink('data/lasso-results.txt')
 '> lasso best lambda'
 lasso_best_mod
 '> lasso test MSE'
