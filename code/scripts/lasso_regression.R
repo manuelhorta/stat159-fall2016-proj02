@@ -8,7 +8,7 @@
 
 message("Running lasso script")
 library(glmnet)
-
+set.seed(1)
 source("code/scripts/data-preprocess.R")
 
 # -------------------------------------------
