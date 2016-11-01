@@ -1,0 +1,20 @@
+[1] "> ridge best lambda"
+[1] 0.01
+[1] "> ridge test MSE"
+[1] 0.04544189
+[1] "> ridge official coefficients"
+13 x 1 sparse Matrix of class "dgCMatrix"
+                              1
+(Intercept)         .          
+(Intercept)         .          
+Income             -0.396531648
+Limit               0.574679291
+Rating              0.558804242
+Cards               0.047147121
+Age                -0.035898960
+Education          -0.003219835
+GenderFemale       -0.005277709
+StudentYes          0.249340890
+MarriedYes         -0.012836321
+EthnicityAsian      0.012458327
+EthnicityCaucasian  0.009923119
