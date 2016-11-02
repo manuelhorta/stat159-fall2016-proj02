@@ -24,6 +24,9 @@ lasso: preproc
 ridge: preproc
 	Rscript -e 'source("code/scripts/ridge_regression.R")'
 
+session:
+	bash session.sh
+	
 
 
 
