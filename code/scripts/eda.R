@@ -1,7 +1,5 @@
 credit=read.csv("data/Credit.csv")
 credit_numeric <- credit[ -c(7:10) ]
-credit_lm <- lm(Balance~Income+Limit+Rating+Cards+Age+Education, data=credit)
-credit_lmsum <- summary.lm(credit_lm, correlation = TRUE)
 sink("data/eda.txt")
 paste("Summary of Quantitative Variables")
 paste("Mean")
