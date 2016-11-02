@@ -1,7 +1,7 @@
 .PHONY: all eda regression session tests report clean data 
 
 # all	
-all: eda regression report
+all: eda regression report preproc pcr pls ridge lasso 
 
 # data downloads Credit dataset
 data: 
@@ -16,8 +16,13 @@ pcr: preproc
 	Rscript -e 'source("code/scripts/pca_regression.R")'
 
 pls: preproc
-	Rscript -e 'source("code/scripts/partial_least_squares.R")'
+	Rscript -e 'source("code/scripts/pls_regression.R")'
 
+lasso: preproc
+	Rscript -e 'source("code/scripts/lasso_regression.R")'
+
+ridge: preproc
+	Rscript -e 'source("code/scripts/ridge_regression.R")'
 
 
 
