@@ -1,5 +1,5 @@
 credit=read.csv("data/Credit.csv")
-credit_numeric <- credit[ -c(7:10) ]
+credit_numeric <- credit[ -c(1,7:10) ]
 sink("data/eda.txt")
 paste("Summary of Quantitative Variables")
 paste("Mean")
