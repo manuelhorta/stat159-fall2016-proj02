@@ -1,5 +1,5 @@
 credit=read.csv("data/Credit.csv")
-credit_numeric <- credit[ -c(1,8:11) ]
+credit_numeric <- credit[ -c(7:10) ]
 credit_lm <- lm(Balance~Income+Limit+Rating+Cards+Age+Education, data=credit)
 credit_lmsum <- summary.lm(credit_lm, correlation = TRUE)
 sink("data/eda.txt")
@@ -51,22 +51,22 @@ aov(Balance~Education, data=credit)
 sink()
 
 pdf("images/barcharts/ethnicity_barchart.pdf")
-barplot(credit$Ethnicity, main="Ethnicity Distribution",
+barplot(table(credit$Ethnicity), main="Ethnicity Distribution",
         xlab="Ethnicity")
 dev.off()
 
 pdf("images/barcharts/gender_barchart.pdf")
-barplot(credit$Gender, main="Gender Distribution",
+barplot(table(credit$Gender), main="Gender Distribution",
         xlab="Gender")
 dev.off()
 
 pdf("images/barcharts/married_barchart.pdf")
-barplot(credit$Married, main="Married Distribution",
+barplot(table(credit$Married), main="Married Distribution",
         xlab="Married")
 dev.off()
 
 pdf("images/barcharts/student_barchart.pdf")
-barplot(credit$Student, main="Student Distribution",
+barplot(table(credit$Student), main="Student Distribution",
         xlab="Student")
 dev.off()
 
