@@ -110,27 +110,27 @@ stat159-fall2016-project2/
 .PHONY: all eda regression session tests report clean data   
 
 eda:  
-	Rscript -e 'source("code/scripts/eda.R")'    
+&nbsp;&nbsp;&nbsp;&nbsp;Rscript -e 'source("code/scripts/eda.R")'    
 
 regression:  
-	make ols  
-	make ridge  
-	make lasso  
-	make pcr  
-	make plsr  
+&nbsp;&nbsp;&nbsp;&nbsp;	make ols  
+&nbsp;&nbsp;&nbsp;&nbsp;	make ridge  
+&nbsp;&nbsp;&nbsp;&nbsp;	make lasso  
+&nbsp;&nbsp;&nbsp;&nbsp;	make pcr  
+&nbsp;&nbsp;&nbsp;&nbsp;	make plsr  
 
 tests:  
-	Rscript -e 'source("code/tests/test-regressions.R")'  
+&nbsp;&nbsp;&nbsp;&nbsp;	Rscript -e 'source("code/tests/test-regressions.R")'  
 
 session:   
-	bash session.sh  
+&nbsp;&nbsp;&nbsp;&nbsp;	bash session.sh  
 	
 
 clean:  
-	rm -f report/report.pdf  
+&nbsp;&nbsp;&nbsp;&nbsp;	rm -f report/report.pdf  
 	
-data: 
-	 curl -o data/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv  
+data:  
+&nbsp;&nbsp;&nbsp;&nbsp;curl -o data/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv  
 	 
 ## Contributing
 
