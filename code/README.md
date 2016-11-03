@@ -4,9 +4,6 @@
 
 #scripts/
 
-1. **data-preprocess.R**
-    #This folder contains the following folders and R scripts:
-
 ##functions/
 
 ##scripts/ 
