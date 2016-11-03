@@ -11,6 +11,7 @@ source('code/scripts/pca_regression.R')
 #--------------------------------------------------------------------------------------------------------
 
 
+message("Running Tests")
 
 # Ridge  
 context("Test Ridge")
@@ -49,4 +50,5 @@ test_that("PLS works" , {
   expect_equal(9L, best_mod_comp_pls)
 })
 
+message("Finished Running Tests")
 # ------- end --------
