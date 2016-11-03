@@ -24,6 +24,9 @@ lasso: preproc
 ridge: preproc
 	Rscript -e 'source("code/scripts/ridge_regression.R")'
 
+eda:
+	Rscript -e 'source("code/scripts/eda.R")'
+
 #ols:
 #	Rscript -e 'source("code/scripts/ols-regression.R")'
 
