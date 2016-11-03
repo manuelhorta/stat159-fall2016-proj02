@@ -36,7 +36,7 @@ regressions:
 	make pcr
 	make plsr
 
-test:
+tests:
 	Rscript -e 'source("code/tests/test-regressions.R")'
 
 session:
