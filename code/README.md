@@ -1,9 +1,5 @@
 #This folder contains the following folders and R scripts:
 
-#functions/
-
-#scripts/
-
 ##functions/
 
 ##scripts/ 
