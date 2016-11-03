@@ -23,24 +23,24 @@ stat159-fall2016-project2/
 			+ ridge_regression.R	  
 			+ session-info.R  
 		+ tests/  
-	+ data/  
-		+ model-results/    
-			+ lasso-results.txt  
-			+ ols-results.txt  
-			+ pcr-results.txt  
-			+ pls-results.txt  
-			+ ridge-results.txt  
-		+ README.md  
-		+ Credit.csv  
-		+ scaled-credit.csv  
-		+ eda.txt  
-		+ train-test-indices.Rdata  
-		+ lasso-saved-objects.Rdata  
-		+ pcr-saved-objects.Rdata  
-		+ pls-saved-objects.Rdata  
-		+ ridge-saved-objects.Rdata  
-		+ ols-saved-objects.Rdata   
-   + images/  
++   data/  
+	+ model-results/    
+		+ lasso-results.txt  
+		+ ols-results.txt  
+		+ pcr-results.txt  
+		+ pls-results.txt  
+		+ ridge-results.txt  
+	+ README.md  
+	+ Credit.csv  
+	+ scaled-credit.csv  
+	+ eda.txt  
+	+ train-test-indices.Rdata  
+	+ lasso-saved-objects.Rdata  
+	+ pcr-saved-objects.Rdata  
+	+ pls-saved-objects.Rdata  
+	+ ridge-saved-objects.Rdata  
+	+ ols-saved-objects.Rdata   
++   images/  
 		+ README.md  
 		+ barcharts/  
 		+ boxplots/  
@@ -52,7 +52,7 @@ stat159-fall2016-project2/
 		+ pls_validation_plot.png  
 		+ ridge_validation_plot.png  
 		+ scatterplot_matrix.pdf  
-	+ report/  
++   report/  
 		+ report.pdf  
 		+ report.Rmd  
 		+ sections/  
