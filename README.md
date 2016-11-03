@@ -126,8 +126,6 @@ session:
 	bash session.sh  
 	
 
-# report  
-
 clean:  
 	rm -f report/report.pdf  
 	
