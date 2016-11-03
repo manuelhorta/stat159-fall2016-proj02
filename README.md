@@ -130,7 +130,7 @@ clean:
 &nbsp;&nbsp;&nbsp;&nbsp;	rm -f report/report.pdf  
 	
 data:  
-&nbsp;&nbsp;&nbsp;&nbsp;curl -o data/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv  
+&nbsp;&nbsp;&nbsp;&nbsp;	curl -o data/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv  
 	 
 ## Contributing
 
