@@ -23,6 +23,7 @@ stat159-fall2016-project2/
 		+ ridge_regression.R	  
 		+ session-info.R  
 	+ tests/  
+		+ test-regressions.R
 +   data/  
 	+ README.md  
 	+ model-results/    
