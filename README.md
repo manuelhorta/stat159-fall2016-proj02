@@ -105,6 +105,35 @@ stat159-fall2016-project2/
 * Check the session-info.txt file to make sure you have the relevant packages
 * Run the Makefile as you see fit to re-implement what you want
 
+## Make commands  
+ 
+.PHONY: all eda regression session tests report clean data   
+
+eda:  
+	Rscript -e 'source("code/scripts/eda.R")'    
+
+regression:  
+	make ols  
+	make ridge  
+	make lasso  
+	make pcr  
+	make plsr  
+
+tests:  
+	Rscript -e 'source("code/tests/test-regressions.R")'  
+
+session:   
+	bash session.sh  
+	
+
+# report  
+
+clean:  
+	rm -f report/report.pdf  
+	
+data: 
+	 curl -o data/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv  
+	 
 ## Contributing
 
 1. Fork it!

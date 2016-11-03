@@ -29,7 +29,7 @@ ridge: preproc
 eda:
 	Rscript -e 'source("code/scripts/eda.R")'
 
-regressions:
+regression:
 	make ols
 	make ridge
 	make lasso
@@ -43,9 +43,6 @@ session:
 	bash session.sh
 
 
-# report
-# slides
-# test
 
 
 
