@@ -11,18 +11,18 @@ stat159-fall2016-project2/
 +   session-info.txt  
 +   .gitignore  
 +   code/  
-		+ README.md  
-		+ functions/  
-		+ scripts/  
-			+ data-preprocess.R  	
-			+ eda.R	  
-			+ lasso_regression.R  	
-			+ ols-regression.R	  
-			+ pca_regression.R	  
-			+ pls_regression.R	  
-			+ ridge_regression.R	  
-			+ session-info.R  
-		+ tests/  
+	+ README.md  
+	+ functions/  
+	+ scripts/  
+		+ data-preprocess.R  	
+		+ eda.R	  
+		+ lasso_regression.R  	
+		+ ols-regression.R	  
+		+ pca_regression.R	  
+		+ pls_regression.R	  
+		+ ridge_regression.R	  
+		+ session-info.R  
+	+ tests/  
 +   data/  
 	+ README.md  
 	+ model-results/    
@@ -41,39 +41,39 @@ stat159-fall2016-project2/
 	+ ridge-saved-objects.Rdata  
 	+ ols-saved-objects.Rdata   
 +   images/  
-		+ README.md  
-		+ barcharts/
-			+ ethnicity_barchart.pdf
-			+ gender_barchart.pdf
-			+ married_barchart.pdf
-			+ student_barchart.pdf
-		+ boxplots/ 
-			+ age_boxplot.pdf
-			+ balance_boxplot.pdf
-			+ cards_boxplot.pdf
-			+ education_boxplot.pdf
-			+ income_boxplot.pdf
-			+ limit_boxplot.pdf
-			+ rating_boxplot.pdf
-		+ conditional_boxplots/  
-			+ ehnicity_conditional_boxplot.pdf
-			+ gender_conditional_boxplot.pdf
-			+ married_conditional_boxplot.pdf
-			+ student_conditional_boxplot.pdf
-		+ histograms/  
-			+ age_histogram.pdf
-			+ balance_histogram.pdf
-			+ cards_histogram.pdf
-			+ education_histogram.pdf
-			+ income_histogram.pdf
-			+ limit_histogram.pdf
-			+ rating_histogram.pdf
-		+ lasso_validation_plot.png  
-		+ ols_plots.png  
-		+ pcr_validation_plot.png  
-		+ pls_validation_plot.png  
-		+ ridge_validation_plot.png  
-		+ scatterplot_matrix.pdf  
+	+ README.md  
+	+ barcharts/
+		+ ethnicity_barchart.pdf
+		+ gender_barchart.pdf
+		+ married_barchart.pdf
+		+ student_barchart.pdf
+	+ boxplots/ 
+		+ age_boxplot.pdf
+		+ balance_boxplot.pdf
+		+ cards_boxplot.pdf
+		+ education_boxplot.pdf
+		+ income_boxplot.pdf
+		+ limit_boxplot.pdf
+		+ rating_boxplot.pdf
+	+ conditional_boxplots/  
+		+ ehnicity_conditional_boxplot.pdf
+		+ gender_conditional_boxplot.pdf
+		+ married_conditional_boxplot.pdf
+		+ student_conditional_boxplot.pdf
+	+ histograms/  
+		+ age_histogram.pdf
+		+ balance_histogram.pdf
+		+ cards_histogram.pdf
+		+ education_histogram.pdf
+		+ income_histogram.pdf
+		+ limit_histogram.pdf
+		+ rating_histogram.pdf
+	+ lasso_validation_plot.png  
+	+ ols_plots.png  
+	+ pcr_validation_plot.png  
+	+ pls_validation_plot.png  
+	+ ridge_validation_plot.png  
+	+ scatterplot_matrix.pdf  
 +   report/  
 		+ report.pdf  
 		+ report.Rmd  
