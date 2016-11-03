@@ -19,12 +19,14 @@ ols<-lm(Balance~Income+Limit+Rating+Cards+Age+Education
         data=as.data.frame(scaled_credit))
 
 summary_ols <- summary(ols)
+mse_ols <- mean(ols$residuals^2)
 
 sink(file = "data/model-results/ols-results.txt")
 summary_ols
+mse_ols
 sink()
 
-save(ols, summary_ols, 
+save(ols, summary_ols, mse_ols, 
      file ='data/ols-saved-objects.Rdata')
 
 # -------------------------------------------

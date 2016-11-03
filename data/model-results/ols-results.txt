@@ -29,3 +29,4 @@ Residual standard error: 0.2149 on 388 degrees of freedom
 Multiple R-squared:  0.9551,	Adjusted R-squared:  0.9538 
 F-statistic: 750.3 on 11 and 388 DF,  p-value: < 2.2e-16
 
+[1] 0.04478619
