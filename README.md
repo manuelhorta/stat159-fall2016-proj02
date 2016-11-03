@@ -11,59 +11,59 @@ stat159-fall2016-project2/
 +   session-info.txt  
 +   .gitignore  
 +   code/  
-		+README.md  
-		+functions/  
-		+scripts/  
-			+data-preprocess.R  	
-			+eda.R	  
-			+lasso_regression.R  	
-			+ols-regression.R	  
-			+pca_regression.R	  
-			+pls_regression.R	  
-			+ridge_regression.R	  
-			+session-info.R  
-		+tests/  
-	+data/  
-		+model-results/    
-			+lasso-results.txt  
-			+ols-results.txt  
-			+pcr-results.txt  
-			+pls-results.txt  
-			+ridge-results.txt  
-		+README.md  
-		+Credit.csv  
-		+scaled-credit.csv  
-		+eda.txt  
-		+train-test-indices.Rdata  
-		+lasso-saved-objects.Rdata  
-		+pcr-saved-objects.Rdata  
-		+pls-saved-objects.Rdata  
-		+ridge-saved-objects.Rdata  
-		+ols-saved-objects.Rdata   
-   +images/  
-		+README.md  
-		+barcharts/  
-		+boxplots/  
-		+conditional_boxplots/  
-		+histograms/  
-		+lasso_validation_plot.png  
-		+ols_plots.png  
-		+pcr_validation_plot.png  
-		+pls_validation_plot.png  
-		+ridge_validation_plot.png  
-		+scatterplot_matrix.pdf  
-	+report/  
-		+report.pdf  
-		+report.Rmd  
-		+sections/  
-			+00-abstract.Rmd  
-			+01-introduction.Rmd  
-			+02-data.Rmd  
-			+03-methods.Rmd  
-			+04-analysis.Rmd  
-			+05-results.Rmd  
-			+06-conclusions.Rmd  
-   +slides/  
+		+ README.md  
+		+ functions/  
+		+ scripts/  
+			+ data-preprocess.R  	
+			+ eda.R	  
+			+ lasso_regression.R  	
+			+ ols-regression.R	  
+			+ pca_regression.R	  
+			+ pls_regression.R	  
+			+ ridge_regression.R	  
+			+ session-info.R  
+		+ tests/  
+	+ data/  
+		+ model-results/    
+			+ lasso-results.txt  
+			+ ols-results.txt  
+			+ pcr-results.txt  
+			+ pls-results.txt  
+			+ ridge-results.txt  
+		+ README.md  
+		+ Credit.csv  
+		+ scaled-credit.csv  
+		+ eda.txt  
+		+ train-test-indices.Rdata  
+		+ lasso-saved-objects.Rdata  
+		+ pcr-saved-objects.Rdata  
+		+ pls-saved-objects.Rdata  
+		+ ridge-saved-objects.Rdata  
+		+ ols-saved-objects.Rdata   
+   + images/  
+		+ README.md  
+		+ barcharts/  
+		+ boxplots/  
+		+ conditional_boxplots/  
+		+ histograms/  
+		+ lasso_validation_plot.png  
+		+ ols_plots.png  
+		+ pcr_validation_plot.png  
+		+ pls_validation_plot.png  
+		+ ridge_validation_plot.png  
+		+ scatterplot_matrix.pdf  
+	+ report/  
+		+ report.pdf  
+		+ report.Rmd  
+		+ sections/  
+			+ 00-abstract.Rmd  
+			+ 01-introduction.Rmd  
+			+ 02-data.Rmd  
+			+ 03-methods.Rmd  
+			+ 04-analysis.Rmd  
+			+ 05-results.Rmd  
+			+ 06-conclusions.Rmd  
+   + slides/  
 
 ## Authors  
 
