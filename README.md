@@ -75,16 +75,16 @@ stat159-fall2016-project2/
 	+ ridge_validation_plot.png  
 	+ scatterplot_matrix.pdf  
 +   report/  
-		+ report.pdf  
-		+ report.Rmd  
-		+ sections/  
-			+ 00-abstract.Rmd  
-			+ 01-introduction.Rmd  
-			+ 02-data.Rmd  
-			+ 03-methods.Rmd  
-			+ 04-analysis.Rmd  
-			+ 05-results.Rmd  
-			+ 06-conclusions.Rmd  
+	+ report.pdf  
+	+ report.Rmd  
+	+ sections/  
+		+ 00-abstract.Rmd  
+		+ 01-introduction.Rmd  
+		+ 02-data.Rmd  
+		+ 03-methods.Rmd  
+		+ 04-analysis.Rmd  
+		+ 05-results.Rmd  
+		+ 06-conclusions.Rmd  
    + slides/  
 
 ## Authors  
