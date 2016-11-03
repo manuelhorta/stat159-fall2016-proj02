@@ -55,7 +55,13 @@ Description: Loads needed packages for the project
  
      
 
-##tests/ Author: Jared Wilber
+##tests/ 
      
 
 #tests/
+
+**test-regression.R**
+
+Author: Jared Wilber
+
+Description: Contains a unit test for the ridge, lasso, pcr, and pls regression models.
