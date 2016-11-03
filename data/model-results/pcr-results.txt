@@ -1,0 +1,34 @@
+
+> '> best_mod_comp_pcr' 
+[1] "> best_mod_comp_pcr"
+
+> best_mod_comp_pcr
+[1] 10
+
+> '> pcr test MSE'
+[1] "> pcr test MSE"
+
+> pcr_mse
+[1] 0.04600761
+
+> '> pcr official coefficients'
+[1] "> pcr official coefficients"
+
+> pcr_full_coefs
+, , 10 comps
+
+                        Balance
+Income             -0.598867038
+Limit               0.671407260
+Rating              0.670637704
+Cards               0.040430737
+Age                -0.023273553
+Education          -0.005999072
+GenderFemale       -0.011647100
+StudentYes          0.276355454
+MarriedYes         -0.011160715
+EthnicityAsian      0.017409486
+EthnicityCaucasian  0.011186964
+
+
+> sink(NULL)

@@ -1,0 +1,34 @@
+
+> '> best_mod_comp_pls' 
+[1] "> best_mod_comp_pls"
+
+> best_mod_comp_pls
+[1] 9
+
+> '> pls test MSE'
+[1] "> pls test MSE"
+
+> pls_mse
+[1] 0.04671458
+
+> '> pls official coefficients'
+[1] "> pls official coefficients"
+
+> pls_full_coefs
+, , 5 comps
+
+                        Balance
+Income             -0.598799860
+Limit               0.675511371
+Rating              0.666478811
+Cards               0.040549351
+Age                -0.022952183
+Education          -0.005819678
+GenderFemale       -0.011762386
+StudentYes          0.276519838
+MarriedYes         -0.011222253
+EthnicityAsian      0.018715763
+EthnicityCaucasian  0.012570418
+
+
+> sink(NULL)
