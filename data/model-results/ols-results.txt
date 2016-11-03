@@ -1,0 +1,31 @@
+
+Call:
+lm(formula = Balance ~ Income + Limit + Rating + Cards + Age + 
+    Education + GenderFemale + StudentYes + MarriedYes + EthnicityAsian + 
+    EthnicityCaucasian, data = as.data.frame(scaled_credit))
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.35157 -0.16900 -0.02935  0.11741  0.69210 
+
+Coefficients:
+                     Estimate Std. Error t value Pr(>|t|)    
+(Intercept)         2.440e-16  1.074e-02   0.000   1.0000    
+Income             -5.982e-01  1.796e-02 -33.314  < 2e-16 ***
+Limit               9.584e-01  1.646e-01   5.824 1.21e-08 ***
+Rating              3.825e-01  1.652e-01   2.315   0.0211 *  
+Cards               5.286e-02  1.295e-02   4.083 5.40e-05 ***
+Age                -2.303e-02  1.103e-02  -2.088   0.0374 *  
+Education          -7.469e-03  1.086e-02  -0.688   0.4921    
+GenderFemale       -1.159e-02  1.079e-02  -1.075   0.2832    
+StudentYes          2.782e-01  1.093e-02  25.459  < 2e-16 ***
+MarriedYes         -9.054e-03  1.099e-02  -0.824   0.4107    
+EthnicityAsian      1.595e-02  1.340e-02   1.190   0.2347    
+EthnicityCaucasian  1.101e-02  1.330e-02   0.828   0.4083    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2149 on 388 degrees of freedom
+Multiple R-squared:  0.9551,	Adjusted R-squared:  0.9538 
+F-statistic: 750.3 on 11 and 388 DF,  p-value: < 2.2e-16
+
