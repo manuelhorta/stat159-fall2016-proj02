@@ -24,13 +24,13 @@ stat159-fall2016-project2/
 			+ session-info.R  
 		+ tests/  
 +   data/  
+	+ README.md  
 	+ model-results/    
 		+ lasso-results.txt  
 		+ ols-results.txt  
 		+ pcr-results.txt  
 		+ pls-results.txt  
 		+ ridge-results.txt  
-	+ README.md  
 	+ Credit.csv  
 	+ scaled-credit.csv  
 	+ eda.txt  
@@ -42,10 +42,32 @@ stat159-fall2016-project2/
 	+ ols-saved-objects.Rdata   
 +   images/  
 		+ README.md  
-		+ barcharts/  
-		+ boxplots/  
+		+ barcharts/
+			+ ethnicity_barchart.pdf
+			+ gender_barchart.pdf
+			+ married_barchart.pdf
+			+ student_barchart.pdf
+		+ boxplots/ 
+			+ age_boxplot.pdf
+			+ balance_boxplot.pdf
+			+ cards_boxplot.pdf
+			+ education_boxplot.pdf
+			+ income_boxplot.pdf
+			+ limit_boxplot.pdf
+			+ rating_boxplot.pdf
 		+ conditional_boxplots/  
+			+ ehnicity_conditional_boxplot.pdf
+			+ gender_conditional_boxplot.pdf
+			+ married_conditional_boxplot.pdf
+			+ student_conditional_boxplot.pdf
 		+ histograms/  
+			+ age_histogram.pdf
+			+ balance_histogram.pdf
+			+ cards_histogram.pdf
+			+ education_histogram.pdf
+			+ income_histogram.pdf
+			+ limit_histogram.pdf
+			+ rating_histogram.pdf
 		+ lasso_validation_plot.png  
 		+ ols_plots.png  
 		+ pcr_validation_plot.png  
