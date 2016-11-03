@@ -45,8 +45,6 @@ session:
 
 # report
 # slides
-# test
-
 
 
 	
