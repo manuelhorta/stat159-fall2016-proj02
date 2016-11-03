@@ -30,7 +30,7 @@ eda:
 	Rscript -e 'source("code/scripts/eda.R")'
 
 regressions:
-	#make ols
+	make ols
 	make ridge
 	make lasso
 	make pcr
@@ -38,7 +38,7 @@ regressions:
 
 test:
 	Rscript -e 'source("code/tests/test-regressions.R")'
-	
+
 session:
 	bash session.sh
 
