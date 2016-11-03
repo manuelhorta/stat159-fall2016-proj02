@@ -11,7 +11,9 @@ data:
 preproc: data code/scripts
 	Rscript -e 'source("code/scripts/data-preprocess.R")'
 
-# Runs principal components regression script
+ols:
+	Rscript -e 'source("code/scripts/ols-regression.R")'
+
 pcr: preproc
 	Rscript -e 'source("code/scripts/pca_regression.R")'
 
@@ -27,8 +29,6 @@ ridge: preproc
 eda:
 	Rscript -e 'source("code/scripts/eda.R")'
 
-#ols:
-#	Rscript -e 'source("code/scripts/ols-regression.R")'
 
 regressions:
 	#make ols
@@ -40,7 +40,6 @@ regressions:
 session:
 	bash session.sh
 
-# eda
 
 # report
 # slides
