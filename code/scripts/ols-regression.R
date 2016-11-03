@@ -23,6 +23,7 @@ mse_ols <- mean(ols$residuals^2)
 
 sink(file = "data/model-results/ols-results.txt")
 summary_ols
+paste("MSE")
 mse_ols
 sink()
 
