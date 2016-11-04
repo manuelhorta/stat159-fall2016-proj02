@@ -87,17 +87,15 @@ Here are the MSE's of each regression:
 suppressMessages(library(xtable))
 load("data/Ridge-saved-objects.Rdata")
 load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
 load("data/pcr-saved-objects.Rdata")
 load("data/pls-saved-objects.Rdata")
 
-names(mse_ols)<-"MSE"
 names(ridge_mse)<-"MSE"
 names(lasso_mse)<-"MSE"
 names(pcr_mse)<-"MSE"
 names(pls_mse)<-"MSE"
-mse_df<-data.frame(mse_ols,ridge_mse,lasso_mse,pcr_mse,pls_mse)
-names(mse_df)<-c("OLS","Ridge", "LASSO","PCR","PLS")
+mse_df<-data.frame(ridge_mse,lasso_mse,pcr_mse,pls_mse)
+names(mse_df)<-c("Ridge", "LASSO","PCR","PLS")
 mse_tbbl<-xtable(mse_df,type="latex")
 print(mse_tbbl)
 ```
