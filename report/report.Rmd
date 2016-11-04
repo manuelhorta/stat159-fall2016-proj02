@@ -1,5 +1,5 @@
 ---
-output: pdf_document
+output: word_document
 ---
 
 ## Abstract
@@ -51,7 +51,7 @@ In our analysis, we will treat `Balance` as the dependent variable and the other
   
   
   
-# 6,2
+# 6.2
   
   we can fit a model containing all p predictors using a technique
 that constrains or regularizes the coefficient estimates, or equivalently, that
@@ -66,17 +66,15 @@ We will discuss two regularization methods: _ridge regression_ and the _lasso_.
 
 ### Ridge Regression
 
-Ridge regresion builds heavily off original least squares regression, which takes the following form
+Ridge regresion builds heavily off original least squares regression, If you'll recall, the RSS for original least squares is as follows:
 
-$ Insert Latex Equation $
+$$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 $$
 
-In ridge regression, we add a _regularization_ parameter to this equation as follows:
+In ridge regression, we add a _regularization_ parameter to this equation, yielding the following quantity""
 
-$ Insert Latex Equation: Ridge Regression $
+$$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 + \sum{i=1}^n (\beta_i)^2$$
   
-This is the new equation that we minimize to find our coefficients. In effect, thi quantity allows our regression model to predict observations that have more generalizability. This equation can be broken down a follow:
-
-$ RSS + other part $
+This is the new equation that we minimize to find our coefficients. In effect, this quantity allows our regression model to predict observations that have more generalizability. 
 
 As with OLS, the above minimization equation hope to find the $\beta$ coefficients that best fit the data. The additional parameter, the $\lambda$ paramater, i known as the _shrinkage_ parameter. It becomes small when the $\beta$ coefficients are almost zero, hence the term _shrinkage_. To control the relative impact each of the two term in our new model has on our coefficient estimates, we use the parameter $\lambda$. When $\lambda = 0$, our equation simplifies to the original $RSS$. When $\lambda to inf$, the impact of the shrinkage parameter gets stronger, making our coefficient approach 0. Thus, our coefficient estimates vary as we tweak $\lambda$. Note, also, that this shrinkage parameter is not applied to our intercept term, as the goal of the minimization is to shrink the association between our predictors and the response.
 
@@ -89,7 +87,7 @@ Additionally, least squares estimates is a very poor strategy for the case when 
 
 _Least Absolute Shrinkage and Selector Operator_, more commonly known as _LASSO_, is a regression method similar to ridge regression. The primary difference between LASSO and ridge is that LASSO will actually shrink some coefficients down to zero, while a ridge regression model fit with p predictors will maintain all p predictors. In this way, LASSO often results in a smaller model than ridge regression and can be looked at as a feature selection method. LASSO gets this property because of its choice of penalty:
 
-INSERT LATEX EQUATION
+$$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 + \sum{i=1}^n (\beta_i)$$
 
 In fact, the only difference between ridge and LASSO is the norm choice in the regularization term. While ridge shrink the coefficients towards zero, no coefficients actually achieve a quantity of zero. On the other hand, coefficients in LASSO will beceome zero, resulting in a much more concise  and interpretable model. Technically speaking, we say that LASSO yields a sparse model (a model with only a subset of variable).
 
@@ -152,8 +150,6 @@ In PLS, we directly utilize the simple regression coefficient for each variable,
 
 
 # Analysis
-
-
 
 ```{r, echo=FALSE}
 suppressMessages(library(xtable))
