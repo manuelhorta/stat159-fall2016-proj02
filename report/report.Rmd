@@ -107,7 +107,7 @@ Clearly, then, our choice of $\lambda$ is very important for a robust analysis -
   
   
   
-# Principal Components regression (PCR)
+### Principal Components regression (PCR)
 
 The third method of our analysis is principal components regression, which is a popular approach to obtain a low dimensional feature set from a dataset with a high number of dimensions. Principal components regression works by first performing principal compnonents analysis (PCA) on the data, then performing a regression on the obtained principal component features.
 
@@ -121,7 +121,7 @@ Prior to performing PCR, predictors should be standardized, otherwise high-varia
 
 
 
-# Partial Least Squares (PLS)
+### Partial Least Squares (PLS)
 
 Partial least squares regression is a regression technique that attempts to overcome the shortcomings of PCA regression. It is very similar to PCA regression but addresses the problem inherent to PCA regression of using prinicipal components that are possibly not related to the response value. In this way, PLS regresion can be viewed as the supervised alternative to the unsupervised PCA regression.
 
@@ -157,6 +157,82 @@ In PLS, we directly utilize the simple regression coefficient for each variable,
 
 
 # Analysis
+
+###OLS 
+
+Applying OLS regression to the data, we get the coefficient estimates and MSE value:
+
+```{r, echo=FALSE}
+load(data/ols-saved-objects.Rdata)
+library(xtable)
+
+ols_summary_tbbl=xtable(summary_ols)
+print(ols_summary_tbbl)
+
+print("MSE", quote=FALSE)
+print(mse_ols)
+
+```
+
+![](images/ols_plots.png)
+
+###Ridge
+
+
+
+
+
+
+
+
+
+###Lasso
+
+Applying Lasso regression to the data, we get the coefficient estimates and MSE value:
+
+```{r, echo=FALSE}
+load(data/data/lasso-saved-objects.Rdata)
+library(xtable)
+
+lasso_summary_tbbl=xtable(lasso_pred_full)
+print(lasso_summary_tbbl)
+
+print("MSE", quote=FALSE)
+print(lasso_mse)
+
+```
+
+![](images/lasso_validation_plot.png)
+
+
+
+
+
+
+###PCR
+
+
+
+
+
+
+
+
+
+
+
+###PLS
+
+
+
+
+
+
+
+
+
+
+
   6.6
   6.7
 # Results
