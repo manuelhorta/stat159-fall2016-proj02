@@ -164,23 +164,24 @@ Applying OLS regression to the data, we get the coefficient estimates and MSE va
 
 ```{r, echo=FALSE}
 load(data/ols-saved-objects.Rdata)
-library(xtable)
+supressMessages(library(xtable))
 
 ols_summary_tbbl=xtable(summary_ols)
-print(ols_summary_tbbl)
+print(ols_summary_tbbl, type="latex")
 
 print("MSE", quote=FALSE)
 print(mse_ols)
 
 ```
 
-![](https://github.com/manuelhorta/stat159-fall2016-proj02/blob/master/images/ols_plots.png)
+![](images/ols_plots.png)
 
 ###Ridge
 
 
 
 
+![](images/ridge_validation_plot.png)
 
 
 
@@ -195,14 +196,14 @@ load(data/data/lasso-saved-objects.Rdata)
 library(xtable)
 
 lasso_summary_tbbl=xtable(lasso_pred_full)
-print(lasso_summary_tbbl)
+print(lasso_summary_tbbl, type="latex")
 
 print("MSE", quote=FALSE)
 print(lasso_mse)
 
 ```
 
-![](https://github.com/manuelhorta/stat159-fall2016-proj02/blob/master/images/lasso_validation_plot.png)
+![](images/lasso_validation_plot.png)
 
 
 
@@ -216,6 +217,7 @@ print(lasso_mse)
 
 
 
+![](images/pcr_validation_plot.png)
 
 
 
@@ -227,6 +229,7 @@ print(lasso_mse)
 
 
 
+![](images/pls_validation_plot.png)
 
 
 
