@@ -224,7 +224,10 @@ h_name <- "Model"
 coeff_df <- data.frame(z,b,h)
 names(coeff_df)<-c(z_name, b_name, h_name)
 
-ggplot(data=coeff_df,aes(x=Variable,y=CoefficientValue))+geom_bar(stat = "identity")+facet_wrap(~Model)
+ggplot(data=coeff_df,aes(x=Variable,y=CoefficientValue))+
+  geom_bar(stat = "identity")+
+  facet_wrap(~Model)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 ```
   6.6
