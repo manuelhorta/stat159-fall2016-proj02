@@ -1,7 +1,7 @@
 #-------------------------------------------
 # -------------------------------------------
 #           PLS Regression
-# This script computes the pls regression of
+#  This script computes the pls regression of
 # the credit data.
 # -------------------------------------------
 # -------------------------------------------
