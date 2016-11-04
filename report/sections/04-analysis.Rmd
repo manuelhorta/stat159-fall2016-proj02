@@ -43,7 +43,18 @@ ridge_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_cr
 load('data/Ridge-saved-objects.Rdata')
 ```
    The MSE for the Ridge model was found to be `r print(ridge_mse)`.
+   
+```{r, echo = F}
+source('code/scripts/ridge_regression.R')
 
+```
+   
+   Plotting the Ridge models gives 'ridge_mod':
+   
+```{r. echo = F}
+plot(ridge_mod)
+
+```
 
 
 
