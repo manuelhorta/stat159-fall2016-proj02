@@ -60,56 +60,5 @@ load('data/Ridge-saved-objects')
 
 
 
-```{r, echo=FALSE}
-suppressMessages(library(xtable))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
-
-v <-as.vector(ols$coefficients)[-c(1)]
-w <-as.vector(ridge_pred_full)[-c(1,2)]
-x <-as.vector(lasso_pred_full)[-c(1,2)]
-y <-as.vector(pcr_full_coefs)
-z <-as.vector(pls_full_coefs)
-coef_names<-c("Income", "Limit", "Rating", 
-              "Cards", "Age", "Education", 
-              "GenderFemale", "StudentYes", 
-              "MarriedYes","EthnicityAsian",
-              "EthnicityCaucasian")
-names(v)<- coef_names
-names(w)<- coef_names
-names(x)<- coef_names
-names(y)<- coef_names
-names(z)<- coef_names
-v_name <- "OLS"
-w_name <- "Ridge"
-x_name <- "LASSO"
-y_name <- "PCR"
-z_name <- "PLS"
-df <- data.frame(v,w,x,y,z)
-names(df)<-c(v_name,w_name,x_name,y_name,z_name)
-coef_tbbl<-xtable(df, type="latex")
-print(coef_tbbl)
-```
-
-```{r echo=FALSE}
-suppressMessages(library(xtable))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
-
-names(ridge_mse)<-"MSE"
-names(lasso_mse)<-"MSE"
-names(pcr_mse)<-"MSE"
-names(pls_mse)<-"MSE"
-mse_df<-data.frame(ridge_mse,lasso_mse,pcr_mse,pls_mse)
-names(mse_df)<-c("Ridge", "LASSO","PCR","PLS")
-mse_tbbl<-xtable(mse_df,type="latex")
-print(mse_tbbl)
-```
   6.6
   6.7
