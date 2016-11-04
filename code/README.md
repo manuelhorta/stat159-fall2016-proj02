@@ -35,7 +35,7 @@ Author: Jared Wilber
      
 Description: Performs PCA regression on the processed data, saves text summary, r data, and plots for the regression
      
-**pls_regression**
+**pls_regression.R**
  
 Author: Jared Wilber
      
@@ -57,8 +57,6 @@ Description: Loads needed packages for the project
 
 ##tests/ 
      
-
-#tests/
 
 **test-regression.R**
 
