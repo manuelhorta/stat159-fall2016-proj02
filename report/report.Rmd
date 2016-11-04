@@ -25,7 +25,7 @@ This dataset is free to access online at the following url http://www-bcf.usc.ed
 
 For this paper, we will use the following variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, `Ethnicity`, and `Balance`. `Income` refers to the person's income in thousands of dollars. `Limit` refers to the person's credit card limit in dollars. `Rating` refers to the person's credit rating. `Cards` refers to the number of cards the person has. `Education` refers to the number of years of education the person has completed. `Student` and `Married` are logical, answering the question of whether the person is currently a student and whether they are married. `Ethnicity` can take the values "Asian", "Caucasian", or "African American".  `Balance` refers to the person's credit card balance in dollars. `Age` and `Gender` are self-explanatory.
 
-In our analysis, we will treat `Balance` as the dependent variable and the other 10 variables of interest as the independent variables.
+In our analysis, we will treat `Balance` as the dependent variable and the other 10 variables of interest as the independent variables. When fitting the models, however, we factorized the categorical data, transforming `Gender`, `Student`, `Married`, and `Ethnicity` into `GenderFemale`, `StudentYes`, `MarriedYes`, `EthnicityCaucasian` and `EthnicityAsian`. Thus we have 11 independent variables in the models when fitting the models.
 
 
 
@@ -193,14 +193,18 @@ print(mse_tbbl)
   List results of analysis
   
   For our analysis, 
-  -ridge
-  -lasso
   
-  Principal Components Regression performed best with 10 components. The full model fit with this number of components resulted in an MSE of ≈ 0.046
+  OLS fit resulted in an MSE of ≈ 0.0448.
   
-  Partial Least Squares Regression performe best with  components. The model fit with this number of components resulted in an MSE of 
+  Ridge performed best with 11 components. The full model fit with this number of components resulted in an MSE of ≈ 0.0454
 
-Thus, our best performing model, with an MSE of ____, is ______. 
+  LASSO performed best with 7 components. The full model fit with this number of components resulted in an MSE of ≈ 0.0468
+  
+  Principal Components Regression performed best with 11 components. The model fit with this number of components resulted in an MSE of ≈ 0.046
+  
+  Partial Least Squares Regression performe best with 11 components. The model fit with this number of components resulted in an MSE of ≈ 0.0467
+
+Thus, our best performing model, with an MSE of ≈ 0.045, is the Ridge Regression model. 
 
 Why is it that original least squares performed better than our other, more complicated methods? The four methods we discussed each have particular use-cases. For example, in cases where the data has a large number of variables, high colliniearity, or a we are seeking a sparse solution, the above techniques will work well. As these aren't necessarily what we're looking for with the Credit data, it's not very surprising that the strong method that is original least squares would perform well.
 
