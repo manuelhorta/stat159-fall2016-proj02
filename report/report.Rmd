@@ -186,6 +186,47 @@ names(mse_df)<-c("OLS","Ridge", "LASSO","PCR","PLS")
 mse_tbbl<-xtable(mse_df,type="latex")
 print(mse_tbbl)
 ```
+
+```{r, echo=FALSE}
+suppressMessages(library(ggplot2))
+load("data/Ridge-saved-objects.Rdata")
+load("data/lasso-saved-objects.Rdata")
+load("data/ols-saved-objects.Rdata")
+load("data/pcr-saved-objects.Rdata")
+load("data/pls-saved-objects.Rdata")
+
+v <-as.vector(ols$coefficients)[-c(1)]
+w  <-append(v, as.vector(ridge_pred_full)[-c(1,2)],
+           after = length(v))
+x <-append(w, as.vector(lasso_pred_full)[-c(1,2)],
+           after = length(w))
+y <-append(x, as.vector(pcr_full_coefs),
+           after = length(x))
+z <-append(y, as.vector(pls_full_coefs),
+           after = length(x))
+
+a<-c("Income", "Limit", "Rating", 
+              "Cards", "Age", "Education", 
+              "GenderFemale", "StudentYes", 
+              "MarriedYes","EthnicityAsian",
+              "EthnicityCaucasian")
+b<- c(rep(a, times=5))
+
+
+h<- c(rep("OLS",times=11), rep("Ridge",times=11),
+      rep("LASSO",times=11),rep("PCR",times=11),
+      rep("PLS",times=11))
+
+
+z_name <- "CoefficientValue"
+b_name <- "Variable"
+h_name <- "Model"
+coeff_df <- data.frame(z,b,h)
+names(coeff_df)<-c(z_name, b_name, h_name)
+
+ggplot(data=coeff_df,aes(x=Variable,y=CoefficientValue))+geom_bar(stat = "identity")+facet_wrap(~Model)
+
+```
   6.6
   6.7
   
