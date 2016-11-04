@@ -1,6 +1,107 @@
 # Results
 
-  List results of analysis
+Here is a table of the coefficients we get after fitting the models:
+
+```{r, echo=FALSE}
+suppressMessages(library(xtable))
+load("data/Ridge-saved-objects.Rdata")
+load("data/lasso-saved-objects.Rdata")
+load("data/ols-saved-objects.Rdata")
+load("data/pcr-saved-objects.Rdata")
+load("data/pls-saved-objects.Rdata")
+
+v <-as.vector(ols$coefficients)[-c(1)]
+w <-as.vector(ridge_pred_full)[-c(1,2)]
+x <-as.vector(lasso_pred_full)[-c(1,2)]
+y <-as.vector(pcr_full_coefs)
+z <-as.vector(pls_full_coefs)
+coef_names<-c("Income", "Limit", "Rating", 
+              "Cards", "Age", "Education", 
+              "GenderFemale", "StudentYes", 
+              "MarriedYes","EthnicityAsian",
+              "EthnicityCaucasian")
+names(v)<- coef_names
+names(w)<- coef_names
+names(x)<- coef_names
+names(y)<- coef_names
+names(z)<- coef_names
+v_name <- "OLS"
+w_name <- "Ridge"
+x_name <- "LASSO"
+y_name <- "PCR"
+z_name <- "PLS"
+df <- data.frame(v,w,x,y,z)
+names(df)<-c(v_name,w_name,x_name,y_name,z_name)
+coef_tbbl<-xtable(df, type="latex")
+print(coef_tbbl)
+```
+
+This is a graphical representation of the coefficients:
+
+```{r, echo=FALSE}
+suppressMessages(library(ggplot2))
+load("data/Ridge-saved-objects.Rdata")
+load("data/lasso-saved-objects.Rdata")
+load("data/ols-saved-objects.Rdata")
+load("data/pcr-saved-objects.Rdata")
+load("data/pls-saved-objects.Rdata")
+
+v <-as.vector(ols$coefficients)[-c(1)]
+w  <-append(v, as.vector(ridge_pred_full)[-c(1,2)],
+           after = length(v))
+x <-append(w, as.vector(lasso_pred_full)[-c(1,2)],
+           after = length(w))
+y <-append(x, as.vector(pcr_full_coefs),
+           after = length(x))
+z <-append(y, as.vector(pls_full_coefs),
+           after = length(x))
+
+a<-c("Income", "Limit", "Rating", 
+              "Cards", "Age", "Education", 
+              "GenderFemale", "StudentYes", 
+              "MarriedYes","EthnicityAsian",
+              "EthnicityCaucasian")
+b<- c(rep(a, times=5))
+
+
+h<- c(rep("OLS",times=11), rep("Ridge",times=11),
+      rep("LASSO",times=11),rep("PCR",times=11),
+      rep("PLS",times=11))
+
+
+z_name <- "CoefficientValue"
+b_name <- "Variable"
+h_name <- "Model"
+coeff_df <- data.frame(z,b,h)
+names(coeff_df)<-c(z_name, b_name, h_name)
+
+ggplot(data=coeff_df,aes(x=Variable,y=CoefficientValue))+
+  geom_bar(stat = "identity")+
+  facet_wrap(~Model)+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+Here are the MSE's of each regression:
+
+```{r echo=FALSE}
+suppressMessages(library(xtable))
+load("data/Ridge-saved-objects.Rdata")
+load("data/lasso-saved-objects.Rdata")
+load("data/ols-saved-objects.Rdata")
+load("data/pcr-saved-objects.Rdata")
+load("data/pls-saved-objects.Rdata")
+
+names(mse_ols)<-"MSE"
+names(ridge_mse)<-"MSE"
+names(lasso_mse)<-"MSE"
+names(pcr_mse)<-"MSE"
+names(pls_mse)<-"MSE"
+mse_df<-data.frame(mse_ols,ridge_mse,lasso_mse,pcr_mse,pls_mse)
+names(mse_df)<-c("OLS","Ridge", "LASSO","PCR","PLS")
+mse_tbbl<-xtable(mse_df,type="latex")
+print(mse_tbbl)
+```
+
   
   For our analysis, 
   -ridge
@@ -13,3 +114,4 @@
 Thus, our best performing model, with an MSE of ____, is ______. 
 
 Why is it that original least squares performed better than our other, more complicated methods? The four methods we discussed each have particular use-cases. For example, in cases where the data has a large number of variables, high colliniearity, or a we are seeking a sparse solution, the above techniques will work well. As these aren't necessarily what we're looking for with the Credit data, it's not very surprising that the strong method that is original least squares would perform well.
+
