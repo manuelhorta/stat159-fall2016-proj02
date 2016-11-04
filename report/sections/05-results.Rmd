@@ -83,7 +83,7 @@ ggplot(data=coeff_df,aes(x=Variable,y=CoefficientValue))+
 
 Here are the MSE's of each regression:
 
-```{r echo=FALSE}
+```{r, echo=FALSE}
 suppressMessages(library(xtable))
 load("data/Ridge-saved-objects.Rdata")
 load("data/lasso-saved-objects.Rdata")
@@ -102,14 +102,19 @@ print(mse_tbbl)
 
   
   For our analysis, 
-  -ridge
-  -lasso
   
-  Principal Components Regression performed best with 10 components. The full model fit with this number of components resulted in an MSE of ≈ 0.046
+  Ridge Regression, with 11 components, resulted in an MSE of `r ridge_mse` 
   
-  Partial Least Squares Regression performe best with  components. The model fit with this number of components resulted in an MSE of 
+  LASSO performed best with 7 components. The full model fit with this number of components resulted in an MSE of `r lasso_mse`
+  
+  Principal Components Regression performed best with 11 components. The full model fit with this number of components resulted in an MSE of `r pcr_mse`
+  
+  Partial Least Squares Regression performe best with 11 components. The model fit with this number of components resulted in an MSE of `r pls_mse`
 
-Thus, our best performing model, with an MSE of ____, is ______. 
+```{r,echo=FALSE}
+min_mse_vec<-c(ridge_mse,lasso_mse,pcr_mse,pls_mse)
+names(min_mse_vec)<-c("Ridge","LASSO","PCR","PLS")
+```
 
-Why is it that original least squares performed better than our other, more complicated methods? The four methods we discussed each have particular use-cases. For example, in cases where the data has a large number of variables, high colliniearity, or a we are seeking a sparse solution, the above techniques will work well. As these aren't necessarily what we're looking for with the Credit data, it's not very surprising that the strong method that is original least squares would perform well.
+Thus, our best performing model, with an MSE of `r min(min_mse_vec)`, is `r names(min(min_mse_vec))`. 
 
