@@ -52,19 +52,3 @@ load('data/Ridge-saved-objects.Rdata')
 
 
 
-
-
-
-
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-  6.6
-  6.7
->>>>>>> 1225b3eecc6f64bfd000f90014bd928e5d49e87c
