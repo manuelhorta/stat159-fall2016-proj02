@@ -1,6 +1,7 @@
----
-output: pdf_document
----
+## Project 2 Statistics 159  
+##Title: Reproducing a Multiple Linear Regression Analysis  
+
+###Authors: Jared Wilber, Austin Carango, Manuel Horta  
 
 
 ## Abstract
