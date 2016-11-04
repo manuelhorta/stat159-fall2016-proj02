@@ -158,84 +158,41 @@ In PLS, we directly utilize the simple regression coefficient for each variable,
 
 # Analysis
 
-###OLS 
 
-Applying OLS regression to the data, we get the coefficient estimates and MSE value:
 
 ```{r, echo=FALSE}
-load(data/ols-saved-objects.Rdata)
-supressMessages(library(xtable))
+suppressMessages(library(xtable))
+load("data/Ridge-saved-objects.Rdata")
+load("data/lasso-saved-objects.Rdata")
+load("data/ols-saved-objects.Rdata")
+load("data/pcr-saved-objects.Rdata")
+load("data/pls-saved-objects.Rdata")
 
-ols_summary_tbbl=xtable(summary_ols)
-print(ols_summary_tbbl, type="latex")
-
-print("MSE", quote=FALSE)
-print(mse_ols)
-
+v <-as.vector(ols$coefficients)[-c(1)]
+w <-as.vector(ridge_pred_full)[-c(1,2)]
+x <-as.vector(lasso_pred_full)[-c(1,2)]
+y <-as.vector(pcr_full_coefs)
+z <-as.vector(pls_full_coefs)
+coef_names<-c("Income", "Limit", "Rating", 
+              "Cards", "Age", "Education", 
+              "GenderFemale", "StudentYes", 
+              "MarriedYes","EthnicityAsian",
+              "EthnicityCaucasian")
+names(v)<- coef_names
+names(w)<- coef_names
+names(x)<- coef_names
+names(y)<- coef_names
+names(z)<- coef_names
+v_name <- "OLS"
+w_name <- "Ridge"
+x_name <- "LASSO"
+y_name <- "PCR"
+z_name <- "PLS"
+df <- data.frame(v,w,x,y,z)
+names(df)<-c(v_name,w_name,x_name,y_name,z_name)
+coef_tbbl<-xtable(df, type="latex")
+print(coef_tbbl)
 ```
-
-![](images/ols_plots.png)
-
-###Ridge
-
-
-
-
-![](images/ridge_validation_plot.png)
-
-
-
-
-
-###Lasso
-
-Applying Lasso regression to the data, we get the coefficient estimates and MSE value:
-
-```{r, echo=FALSE}
-load(data/data/lasso-saved-objects.Rdata)
-library(xtable)
-
-lasso_summary_tbbl=xtable(lasso_pred_full)
-print(lasso_summary_tbbl, type="latex")
-
-print("MSE", quote=FALSE)
-print(lasso_mse)
-
-```
-
-![](images/lasso_validation_plot.png)
-
-
-
-
-
-
-###PCR
-
-
-
-
-
-
-![](images/pcr_validation_plot.png)
-
-
-
-
-
-###PLS
-
-
-
-
-
-![](images/pls_validation_plot.png)
-
-
-
-
-
-
   6.6
   6.7
 # Results
