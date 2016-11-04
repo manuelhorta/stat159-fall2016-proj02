@@ -1,6 +1,6 @@
 # -------------------------------------------
 # -------------------------------------------
-#           PCA Regression
+#            PCA Regression
 # This script computes the pca regression of
 # the credit data.
 # -------------------------------------------
