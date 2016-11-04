@@ -12,11 +12,11 @@ output: pdf_document
   4. Special case
   5. Selecting parameter
   
-6.3 Dimension Reduction Methods
-  1. Principal Components Regression
-    1.1 PCA
-    1.2 Regression on PCA
-  2. Partial Least Squares
+6.3 Dimension Reduction Methods:     
+  1. Principal Components Regression  
+    1.1 PCA    
+    1.2 Regression on PCA  
+  2. Partial Least Squares  
   
   
   
