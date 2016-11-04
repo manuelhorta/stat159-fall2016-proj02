@@ -8,13 +8,14 @@
 
 message("Running lasso script")
 library(glmnet)
-set.seed(1)
 source("code/scripts/data-preprocess.R")
 
 # -------------------------------------------
 # Fit Model
 # -------------------------------------------
 grid = 10^seq(10, -2, length = 100)
+
+set.seed(1)
 
 x <- model.matrix(Balance ~ ., data = data.frame(credit_train))
 y <- data.frame(credit_train)$Balance
@@ -47,7 +48,8 @@ lasso_mse <- mean((lasso_pred - credit_test[,12])^2)
 lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
                             data.frame(scaled_credit)$Balance,
                             intercept = FALSE,
-                            standardize = FALSE)
+                            standardize = FALSE, 
+                            alpha=1)
 
 
 (lasso_pred_full <- predict (lasso_fit_full, type="coefficients", s = lasso_best_mod))
