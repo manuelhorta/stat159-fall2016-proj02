@@ -1,3 +1,14 @@
+<style>
+.footer {
+    color: black;
+    background: #E8E8E8;
+    position: fixed;
+    top: 90%;
+    text-align:center;
+    width:100%;
+}
+</style>
+
 slides
 ========================================================
 author: Jared Wilber, Austin Carango, Manuel Horta
@@ -18,20 +29,24 @@ Ridge Regression
 ========================================================
 
 - Shrinkage Technique
-- Append l-2 regularization parameter to
+- Form: Append l-2 regularization parameter to the RSS of original least squares
+- What is it: Ridge regression is a regularization technique that appends an l-2 norm to the RSS of OLS.
+- Minimizing this quantity has the effect of trading bias for variance
 
 Ridge Regresson 2
 ========================================================
-
-
-
-Lasso
-========================================================
-
-
+- The regularization term is controlled by the lambda parameter
+- You can select the best lambda parameter with cross-validation.
+- When lambda grows, the severity of the penalty increases.
+- When lambda is small, it approaches original least squares (they're the same if lambda=0)
+- Sends parameters towards 0 (but never actually to zero)
 
 Lasso
 ========================================================
+- Least Absolute Shrinkage and Selection Operator
+- Shrinkage Technique
+- Very similar to Ridge Regression but uses the L-1 Penalty instead
+- Will actually send coefficients towards zero.
 
 
 Principal Components Regression
@@ -77,12 +92,3 @@ the selected components are associated with the dependent variable
 Conclusions
 ========================================================
 
-- Multiple regression techniques exist, each with their own pros and cons
-
-- Ridge
-
-- Lasso
-
-- PCR
-
--PLS
