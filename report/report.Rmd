@@ -1,15 +1,10 @@
 ---
-output: word_document
+output: pdf_document
 ---
 
 ## Abstract
 
-
-
-
-The idea of this project is to perform a predictive modeling process applied on the data set Credit. The data set is described in page 83, and available as a CSV file at: 
-
-The idea of this project is to perform a predictive modeling process applied on the Credit data set. This dataset reports credit card balance, credit score, income, age , gender, etc. for 400 people. This data is freely available at available as a CSV file at. The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at http://www-bcf.usc.edu/~gareth/ISL/ISLR%20First%20Printing.pdf.
+The idea of this project is to perform a predictive modeling process on the Credit data set. This dataset reports credit card balance, credit score, income, age , gender, etc. for 400 people. This data is freely available ass a CSV file at [http://www-bcf.usc.edu/~gareth/ISL/Credit.csv](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv). The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at http://www-bcf.usc.edu/~gareth/ISL/ISLR%20First%20Printing.pdf.
 
 
 
@@ -122,18 +117,6 @@ As with PCA regression, PLS regression first reduces the dimensions of the data 
 
 
 In PLS, we directly utilize the simple regression coefficient for each variable, as this coefficient is proportionally correlated to the response value. For this reason, PLS will place the highest weight on variables that are most strongly related to the response value. We continue selecting directions by iteratviely carrying out the following procedure: regress each variable on the former direction, then use the residuals to find the next direction.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
