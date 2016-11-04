@@ -1,0 +1,9 @@
+---
+output: pdf_document
+---
+
+
+## Abstract
+
+The idea of this project is to perform a predictive modeling process on the Credit data set. This dataset reports credit card balance, credit score, income, age , gender, etc. for 400 people. This data is freely available ass a CSV file at [http://www-bcf.usc.edu/~gareth/ISL/Credit.csv](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv). The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at http://www-bcf.usc.edu/~gareth/ISL/ISLR%20First%20Printing.pdf.
+

@@ -1,0 +1,12 @@
+
+## Conclusion
+
+Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
+
+The above analysis answered this question via a predictive modeling process that discussed several different regression methods. Specifically, the analysis utilized OLS, ridge, LASSO, PCA, and PLS regressions. Each method was discussed and applied separately to the Credit data, where credict card `Balance` was modeled as a function of 10 variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, and `Ethnicity`.
+
+Our results yielded different scores, with 
+
+That said, all of our models performed well. Thus, regression techniques work well when you have multiple predictors, a continuous response type, and assume a linear relationship between the response and predictors. Different regression techniques exist with different strengths and weaknesses.
+
+

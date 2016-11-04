@@ -1,0 +1,8 @@
+
+## Introduction
+
+Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
+
+To answer this question, the following paper will discuss several different regression methods used in the predictive modeling process. The specific methods discussed are: OLS, ridge, LASSO, PCA, and PLS. Each method will be discussed and applied separately to the Credit data. More information regarding these methods is available in sections 6.2, 6.3, 6.6, and 6.7 of chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al).
+
+We will attempt to model credit card balance as a function of 10 variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, and `Ethnicity`. Because we are modelling this relationship via linear regression, we are inherently assuming that a linear relationship exists between our dependent variables and independent variable. We will run a total of five regressions: one for each regression method.

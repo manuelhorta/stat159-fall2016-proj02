@@ -1,0 +1,15 @@
+# Results
+
+  List results of analysis
+  
+  For our analysis, 
+  -ridge
+  -lasso
+  
+  Principal Components Regression performed best with 10 components. The full model fit with this number of components resulted in an MSE of ≈ 0.046
+  
+  Partial Least Squares Regression performe best with  components. The model fit with this number of components resulted in an MSE of 
+
+Thus, our best performing model, with an MSE of ____, is ______. 
+
+Why is it that original least squares performed better than our other, more complicated methods? The four methods we discussed each have particular use-cases. For example, in cases where the data has a large number of variables, high colliniearity, or a we are seeking a sparse solution, the above techniques will work well. As these aren't necessarily what we're looking for with the Credit data, it's not very surprising that the strong method that is original least squares would perform well.

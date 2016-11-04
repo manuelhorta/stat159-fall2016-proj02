@@ -30,7 +30,7 @@ In our analysis, we will treat `Balance` as the dependent variable and the other
 
 
 
-# Methods
+## Methods
 
 6.2 Shrinkage Methods:
   1. Ridge Regression
@@ -38,7 +38,7 @@ In our analysis, we will treat `Balance` as the dependent variable and the other
   3. Ridge vs Lasso
   4. Special case
   5. Selecting parameter
-6,3
+6.3
   1. Principal Components Regression
     1.1 PCA
     1.2 Regression on PCA
@@ -46,7 +46,7 @@ In our analysis, we will treat `Balance` as the dependent variable and the other
   
   
   
-# 6.2
+## 6.2
   
   we can fit a model containing all p predictors using a technique
 that constrains or regularizes the coefficient estimates, or equivalently, that
@@ -132,7 +132,7 @@ In PLS, we directly utilize the simple regression coefficient for each variable,
 
 
 
-# Analysis
+## Analysis
 
 ```{r, echo=FALSE}
 suppressMessages(library(xtable))
@@ -187,7 +187,8 @@ print(mse_tbbl)
 ```
   6.6
   6.7
-# Results
+  
+## Results
 
   List results of analysis
   
@@ -204,7 +205,7 @@ Thus, our best performing model, with an MSE of ____, is ______.
 Why is it that original least squares performed better than our other, more complicated methods? The four methods we discussed each have particular use-cases. For example, in cases where the data has a large number of variables, high colliniearity, or a we are seeking a sparse solution, the above techniques will work well. As these aren't necessarily what we're looking for with the Credit data, it's not very surprising that the strong method that is original least squares would perform well.
 
 
-# Conclusion
+## Conclusion
 
 Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
 
