@@ -174,7 +174,7 @@ print(mse_ols)
 
 ```
 
-![](images/ols_plots.png)
+![](https://github.com/manuelhorta/stat159-fall2016-proj02/blob/master/images/ols_plots.png)
 
 ###Ridge
 
@@ -202,7 +202,7 @@ print(lasso_mse)
 
 ```
 
-![](images/lasso_validation_plot.png)
+![](https://github.com/manuelhorta/stat159-fall2016-proj02/blob/master/images/lasso_validation_plot.png)
 
 
 
