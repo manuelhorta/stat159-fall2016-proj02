@@ -11,7 +11,8 @@ output: pdf_document
   3. Ridge vs Lasso
   4. Special case
   5. Selecting parameter
-6.3
+  
+6.3 Dimension Reduction Methods
   1. Principal Components Regression
     1.1 PCA
     1.2 Regression on PCA
