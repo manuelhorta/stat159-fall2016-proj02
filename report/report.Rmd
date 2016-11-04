@@ -9,33 +9,28 @@ output: pdf_document
 
 The idea of this project is to perform a predictive modeling process applied on the data set Credit. The data set is described in page 83, and available as a CSV file at: 
 
-The idea of this project is to perform a predictive modeling process applied on the Credit data set. [DESCRIBE DATA SET]. This data is freely available at available as a CSV file at. The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at [INSERT URL] .
+The idea of this project is to perform a predictive modeling process applied on the Credit data set. This dataset reports credit card balance, credit score, income, age , gender, etc. for 400 people. This data is freely available at available as a CSV file at. The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at [INSERT URL] .
 
 
 
 ## Introduction
 
-mirror below
-Given a data set containing information pertaining to both sales and advertising budget, how could one develop a marketing plan that would result in higher product sales?
+Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
 
-We will answer thi question via a predictive modeling process that includes [DESCRIBE PROJECT LAYOUT]
+To answer this question, the following paper will discuss several different regression methods used in the predictive modeling process. The specific methods discussed are: OLS, ridge, LASSO, PCA, and PLS. Each method will be discussed and applied separately to the Credit data. More information regarding these methods is available in sections 6.2, 6.3, 6.6, and 6.7 of chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al).
 
-To achieve this goal, the following paper will discuss everal different regression methods used in the predictive modeling process. The s pecific methods discussed are: [INSERT METHODS]. Each method will be discussed and applied separately to the Credit data. More information regarding these methods is available in sections 6.2, 6.3, 6.6, and 6.7 of chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al).
-
-pertaining to  how improving sales via multiple linear regression can be implemented. We will attempt to model the sales of a particular product as a function of advertising budget for three types of media: TV, radio, and newspaper. Because we are modelling this relationship via linear regression, we are inherently assuming that a linear relationship exists between our dependent variables and independent variable. We will run a total of four regressions: one for each of the sale + predictor combinations, and one where we regress sales on all three predictors.
+We will attempt to model credit card balance as a function of 10 variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, and `Ethnicity`. Because we are modelling this relationship via linear regression, we are inherently assuming that a linear relationship exists between our dependent variables and independent variable. We will run a total of five regressions: one for each regression method.
 
 
 ## Data
 
-mirror everything below
+The data set utilized in this paper, `Credit.csv`, contains 400 observations of 12 variables. Each observation corresponds to one person, and 11 of the variables are of general interest: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, `Ethnicity`, and `Balance`. The  variable `X` is an index.
 
-The data set utilized in this paper, __Advertising.csv__, contains 200 observations of 5 variables. Four of the variables are of general interest: __Sales__, __TV__, __Radio__, and __Newspaper__. The fifth variable, __X__, is an index.
+This dataset is free to access online at the following url http://www-bcf.usc.edu/~gareth/ISL/Credit.csv. Alternatively, you can visit the author's GitHub repository [My Github Account](http://www.github.com/jwilber) to access it as well.
 
-This dataset is free to access online at the following url [URL]. Alternatively, you can visit the author's GitHub repository [My Github Account](http://www.github.com/jwilber) to access it as well.
+For this paper, we will use the following variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, `Ethnicity`, and `Balance`. `Income` refers to the person's income in thousands of dollars. `Limit` refers to the person's credit card limit in dollars. `Rating` refers to the person's credit rating. `Cards` refers to the number of cards the person has. `Education` refers to the number of years of education the person has completed. `Student` and `Married` are logical, answering the question of whether the person is currently a student and whether they are married. `Ethnicity` can take the values "Asian", "Caucasian", or "African American".  `Balance` refers to the person's credit card balance in dollars. `Age` and `Gender` are self-explanatory.
 
-For this paper, we will use the following variables: __Sales__, __Radio__, _Newspaper__, and __TV__. __Sales__ refers to the number (in thousands) of a particular product's sales in 200 different markets. The other three variables correspond to advertising budget for each medium (in the thousands of $)
-
-In our analysis, we will treat __Sales__ as the dependent variable and __TV__, __Radio__, and __Newspaper__ as the independent variables.
+In our analysis, we will treat `Balance` as the dependent variable and the other 10 variables of interest as the independent variables.
 
 
 
