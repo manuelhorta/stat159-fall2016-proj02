@@ -20,18 +20,17 @@ output: pdf_document
   
   
   
-## 6.2
+## 6.2 Shrinkage Methods
   
-  we can fit a model containing all p predictors using a technique
+  We can fit a model containing al  l p predictors using a technique
 that constrains or regularizes the coefficient estimates, or equivalently, that
-shrinks the coefficient estimates towards zero. It may not be immediately
-6.2 Shrinkage Methods 215
+shrinks the coefficient estimates towards zero. It may not be immediately 
 obvious why such a constraint should improve the fit, but it turns out that
 shrinking the coefficient estimates can significantly reduce their variance.
-The two best-known techniques for shrinking th
 
-The first class of techniques we will discuss fall into the domain of so-called "shrinkage" methods. These are techniques that allow us to fit a model with all $p$ predictors via a regularization method that _shrinks_ the coefficient estimates towards zero.
 We will discuss two regularization methods: _ridge regression_ and the _lasso_.
+These are techniques that allow us to fit a model with all $p$ predictors via a regularization method that _shrinks_ the coefficient estimates towards zero.
+
 
 ### Ridge Regression
 
@@ -67,8 +66,10 @@ Clearly, then, our choice of $\lambda$ is very important for a robust analysis -
 
 
   
-  
-  
+## 6.3 Dimension Reduction Methods:     
+Another class of approaches transform the predictors and then fit a least
+squares model using the transformed variables. These are Dimension reduction methods. We will discuss two of this kind: _Principal Component Analysis_ and _Partial Least Squares_. 
+
 ### Principal Components regression (PCR)
 
 The third method of our analysis is principal components regression, which is a popular approach to obtain a low dimensional feature set from a dataset with a high number of dimensions. Principal components regression works by first performing principal compnonents analysis (PCA) on the data, then performing a regression on the obtained principal component features.
