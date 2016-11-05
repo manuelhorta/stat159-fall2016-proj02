@@ -4,6 +4,10 @@ output: pdf_document
 author: Austin Carango, Manuel Horta, Jared Wilber
 ---
 
+## Abstract
+
+The objective of this project is to perform a predictive modeling process on the Credit dataset. This dataset reports four-hundred observations of twelve variables. The methods discussed are primarily based on chapter 6: Linear Model Selection and Regularization (from "_An Introduction to Statistical Learning_"" by James et al.). We discuss ridge regression, lasso regression, principal components regression, and partial least squares regression.
+
 
 ## Introduction
 
