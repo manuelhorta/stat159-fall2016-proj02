@@ -2,6 +2,12 @@
 
 ##functions/
 
+**which-min.R**
+
+Author: Austin Carango
+
+Description: Function that returns the name corresponding to the minimum element of object x.
+
 ##scripts/ 
 
 **data-preprocess.R**
