@@ -80,7 +80,7 @@ that is very similar to principal components analysis, but
 accounts for the association with Y downfall of PCR by ensuring that
 the selected components are associated with the dependent variable
 
-- It has the same cons as PCR with regards to
+- It has the same cons as PCR with regards to interpretability.
 
 ## Conclusions
 
