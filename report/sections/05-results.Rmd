@@ -1,3 +1,6 @@
+---
+output: html_document
+---
 # Results
 
 
@@ -12,7 +15,7 @@ temp_credit <- model.matrix(Balance ~ ., data = credit)
 new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
 
 scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
-write.csv(scaled_credit, file = "data/scaled-credit.csv")
+#write.csv(scaled_credit, file = "data/scaled-credit.csv")
 
 set.seed(1)
 
@@ -52,7 +55,7 @@ ols<-lm(Balance~Income+Limit+Rating+Cards+Age+Education
         +EthnicityCaucasian, 
         data=as.data.frame(scaled_credit))
 
-summary_ols <- summary(ols)`
+summary_ols <- summary(ols)
 mse_ols <- mean(ols$residuals^2)
 
 suppressMessages(library(pls))
@@ -233,7 +236,7 @@ print(mse_tbbl)
   Partial Least Squares Regression performe best with 11 components. The model fit with this number of components resulted in an MSE of `r pls_mse`
 
 ```{r,echo=FALSE}
-min_mse_vec<-c(ridge_mse,lasso_mse,pcr_mse,pls_mse)
+min_mse_vec <- c(ridge_mse,lasso_mse,pcr_mse,pls_mse)
 names(min_mse_vec)<-c("Ridge","LASSO","PCR","PLS")
 ```
 
