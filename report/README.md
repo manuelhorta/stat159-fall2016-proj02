@@ -4,6 +4,9 @@
 
 Description: Final report created by merging the following section files. 
 
+**report.pdf**
+Description: pdf version of report.Rmd
+
 ##sections/  
 
 **00-abstract.Rmd** 
