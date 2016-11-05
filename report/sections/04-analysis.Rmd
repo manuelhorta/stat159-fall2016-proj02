@@ -4,7 +4,7 @@ output: pdf_document
 
 ## Analysis
 
-  In this section we will show the processes used to perform each of the five regression methods: Ordinary Least Squares, Ridge regression, LASSO, PCR, and PLS.
+  In this section we will show the processes used to perform each of the five regression methods: Ordinary Least Squares, Ridge regression, LASSO, PCR, and PLS. We will also display plots for each regression.
   Each regression model was fitted on the training data and we identified the best model. Using this best model we fit it again on the testing data and calculated the MSE value. Finally, we fit the best model again on the entire dataset for comparison. Before running these regressions, we factorized categorical variables and then standardized the data. 
 
 
@@ -31,6 +31,8 @@ sink()
 save(ols, summary_ols, mse_ols, 
      file ='data/ols-saved-objects.Rdata')
 ```
+
+![](../../images/ols_plots.png)
 
 ### Ridge Regression
 
@@ -65,6 +67,8 @@ ridge_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_cr
 
 
 ```
+
+![](../../images/ridge_validation_plot.png)
 
 ### LASSO Regression
 
@@ -106,6 +110,8 @@ lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_cr
 
 ```
 
+![](../../images/lasso_validation_plot.png)
+
 ### Principal Components Regression
 
 ```{r eval = F, echo = T}
@@ -146,6 +152,8 @@ pcr_full_coefs <- coefficients(pcr_fit_full)
 
 ```
 
+![](../../images/pcr_validation_plot.png)
+
 ### PLS Regression
 
 ```{r eval = F, echo = T}
@@ -185,5 +193,5 @@ pls_full_coefs <- coefficients(pls_fit_full)
 
 ```
 
-
+![](../../images/pls_validation_plot.png)
 
