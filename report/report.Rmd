@@ -4,6 +4,7 @@ output: pdf_document
 author: Austin Carango, Manuel Horta, Jared Wilber
 ---
 
+
 ## Introduction
 
 Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
@@ -61,7 +62,7 @@ $$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 $$
 
 In ridge regression, we add a _regularization_ parameter to this equation, yielding the following quantity""
 
-$$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 + \sum{i=1}^n (\beta_i)^2$$
+$$RSS + \lambda\sum_{j=1}^p \beta_j^2$$
   
 This is the new equation that we minimize to find our coefficients. In effect, this quantity allows our regression model to predict observations that have more generalizability. 
 
@@ -76,7 +77,7 @@ Additionally, least squares estimates is a very poor strategy for the case when 
 
 _Least Absolute Shrinkage and Selector Operator_, more commonly known as _LASSO_, is a regression method similar to ridge regression. The primary difference between LASSO and ridge is that LASSO will actually shrink some coefficients down to zero, while a ridge regression model fit with p predictors will maintain all p predictors. In this way, LASSO often results in a smaller model than ridge regression and can be looked at as a feature selection method. LASSO gets this property because of its choice of penalty:
 
-$$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 + \sum{i=1}^n (\beta_i)$$
+$$RSS + \lambda\sum_{j=1}^p |\beta_j|$$
 
 In fact, the only difference between ridge and LASSO is the norm choice in the regularization term. While ridge shrink the coefficients towards zero, no coefficients actually achieve a quantity of zero. On the other hand, coefficients in LASSO will beceome zero, resulting in a much more concise  and interpretable model. Technically speaking, we say that LASSO yields a sparse model (a model with only a subset of variable).
 
@@ -110,7 +111,10 @@ Partial least squares regression is a regression technique that attempts to over
 As with PCA regression, PLS regression first reduces the dimensions of the data by creating linear combinations of the dataset's features. However, PLS regression identifies the features in a supervised manner wherein which the response value is utilized in such a way that our newly created features are related to the response; i.e. the PLS method finds directions that explain both the response and the predictors.
 
 
-In PLS, we directly utilize the simple regression coefficient for each variable, as this coefficient is proportionally correlated to the response value. For this reason, PLS will place the highest weight on variables that are most strongly related to the response value. We continue selecting directions by iteratviely carrying out the following procedure: regress each variable on the former direction, then use the residuals to find the next direction.
+In PLS, we directly utilize the simple regression coefficient for each variable, as this coefficient is proportionally correlated to the response value. For this reason, PLS will place the highest weight on variables that are most strongly related to the response value.
+
+ PLSR generates the first directional vector by computing correlation between the feature space and the calculated regression coefficient of Y regressed onto its predictors. This has the effect of placing the highest weight on the most correlated predictors. Following this, second direction is created by regressing each predictor onto the previously calculated first direction and taking the residuals, (intuitively this represent the informatino not explaine dby the first component). The second direction is thus computed from these redsiduals.We continue selecting directions by iteratviely carrying out the following procedure: regress each variable on the former direction, then use the residuals to find the next direction.
+
 
 
 ## Analysis
@@ -133,17 +137,17 @@ ols<-lm(Balance~Income+Limit+Rating+Cards+Age+Education
 summary_ols <- summary(ols)
 mse_ols <- mean(ols$residuals^2)
 
-sink(file = "data/model-results/ols-results.txt")
+#sink(file = "data/model-results/ols-results.txt")
 summary_ols
 paste("MSE")
 mse_ols
-sink()
+#sink()
 
-save(ols, summary_ols, mse_ols, 
-     file ='data/ols-saved-objects.Rdata')
+#save(ols, summary_ols, mse_ols, 
+ #    file ='data/ols-saved-objects.Rdata')
 ```
 
-![](../../images/ols_plots.png)
+![](../images/ols_plots.png)
 
 ### Ridge Regression
 
@@ -179,7 +183,7 @@ ridge_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_cr
 
 ```
 
-![](../../images/ridge_validation_plot.png)
+![](../images/ridge_validation_plot.png)
 
 ### LASSO Regression
 
@@ -222,7 +226,7 @@ lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_cr
 
 ```
 
-![](../../images/lasso_validation_plot.png)
+![](../images/lasso_validation_plot.png)
 
 ### Principal Components Regression
 
@@ -264,7 +268,7 @@ pcr_full_coefs <- coefficients(pcr_fit_full)
 
 ```
 
-![](../../images/pcr_validation_plot.png)
+![](../images/pcr_validation_plot.png)
 
 ### PLS Regression
 
@@ -305,7 +309,7 @@ pls_full_coefs <- coefficients(pls_fit_full)
 
 ```
 
-![](../../images/pls_validation_plot.png)
+![](../images/pls_validation_plot.png)
 
 
 # Results
@@ -551,3 +555,13 @@ names(min_mse_vec)<-c("Ridge","LASSO","PCR","PLS")
 ```
 
 Thus, our best performing model, with an MSE of `r min(min_mse_vec)`, is `r names(which.min(min_mse_vec))`. 
+
+
+## Conclusion
+
+Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
+
+The above analysis answered this question via a predictive modeling process that discussed several different regression methods. Specifically, the analysis utilized OLS, ridge, LASSO, PCA, and PLS regressions. Each method was discussed and applied separately to the Credit data, where credict card `Balance` was modeled as a function of 10 variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, and `Ethnicity`.
+
+All of our models performed well. Thus, regression techniques work well when you have multiple predictors, a continuous response type, and assume a linear relationship between the response and predictors. Different regression techniques exist with different strengths and weaknesses.
+
