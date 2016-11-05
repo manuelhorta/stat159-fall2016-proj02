@@ -1,14 +1,143 @@
 # Results
 
+
+```{r echo=FALSE}
+
+set.seed(1)
+
+credit <- read.csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv")
+credit <- credit[,c(2:12)]
+
+temp_credit <- model.matrix(Balance ~ ., data = credit)
+new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
+
+scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
+write.csv(scaled_credit, file = "data/scaled-credit.csv")
+
+set.seed(1)
+
+train_indices <- sample(1:400,300)
+test_indices <- which(!(c(1:400) %in% train_indices))
+
+credit_train <- scaled_credit[train_indices,]
+credit_test  <- scaled_credit[-train_indices,]
+
+suppressMessages(library(glmnet))
+
+grid = 10^seq(10, -2, length = 100)
+
+set.seed(1)
+
+x <- model.matrix(Balance ~ ., data = data.frame(credit_train))
+y <- data.frame(credit_train)$Balance
+
+lasso_mod <- cv.glmnet(x, y, intercept=FALSE, standardize=FALSE, lambda = grid, alpha=1)
+
+lasso_best_mod <- lasso_mod$lambda.min
+
+lasso_pred <- predict(lasso_mod, s = lasso_best_mod, newx= model.matrix(Balance ~ ., data = data.frame(credit_test)))
+
+lasso_mse <- mean((lasso_pred - credit_test[,12])^2)
+
+lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
+                            data.frame(scaled_credit)$Balance,
+                            intercept = FALSE,
+                            standardize = FALSE, 
+                            alpha=1)
+
+lasso_pred_full <- predict (lasso_fit_full, type="coefficients", s = lasso_best_mod)
+
+ols<-lm(Balance~Income+Limit+Rating+Cards+Age+Education
+        +GenderFemale+StudentYes+MarriedYes+EthnicityAsian
+        +EthnicityCaucasian, 
+        data=as.data.frame(scaled_credit))
+
+summary_ols <- summary(ols)`
+mse_ols <- mean(ols$residuals^2)
+
+suppressMessages(library(pls))
+set.seed(1)
+
+pcr_fit=pcr(Balance ~ ., 
+             data = data.frame(credit_train),
+             scale = FALSE,
+             validation = "CV")
+
+best_mod_comp_pcr <- which.min(pcr_fit$validation$PRESS)
+
+pcr_pred = predict(pcr_fit, 
+                   credit_test[,-12],
+                   ncomp = best_mod_comp_pcr)
+
+pcr_mse <- mean((pcr_pred - credit_test[,12])^2)
+
+pcr_fit_full <- pcr(Balance ~ .,
+                     data = data.frame(scaled_credit),
+                     scale = FALSE, 
+                     ncomp = best_mod_comp_pcr)
+                     
+pcr_full_coefs <- coefficients(pcr_fit_full)
+
+set.seed(1)
+
+pls_fit=plsr(Balance ~ ., 
+             data = data.frame(credit_train),
+             scale = FALSE,
+             validation = "CV")
+             
+best_mod_comp_pls <- which.min(pls_fit$validation$PRESS)
+
+pls_pred = predict(pls_fit, 
+                   credit_test[,-12],
+                   ncomp = best_mod_comp_pls)
+
+
+pls_mse <- mean((pls_pred - credit_test[,12])^2)
+
+pls_fit_full <- plsr(Balance ~ .,
+                     data = data.frame(scaled_credit),
+                     scale = FALSE, 
+                     ncomp = 5)
+
+pls_full_coefs <- coefficients(pls_fit_full)
+
+set.seed(1)
+
+grid <- 10^seq(10, -2, length = 100)
+
+set.seed(1)
+x <- model.matrix(Balance ~ ., data = data.frame(credit_train))
+y <- data.frame(credit_train)$Balance
+
+ridge_mod <- cv.glmnet(x, y, intercept = FALSE, standardize = FALSE, lambda = grid, alpha = 0)
+
+
+ridge_best_labmda <- ridge_mod$lambda.min
+
+ridge_pred <- predict(ridge_mod,
+                      s= ridge_best_labmda,
+                      newx= model.matrix(Balance ~ ., data = data.frame(credit_test)))
+
+ridge_mse <- mean((ridge_pred - credit_test[,12])^2)
+
+ridge_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
+                            data.frame(scaled_credit)$Balance, 
+                            intercept = FALSE,
+                            standardize = FALSE,
+                            alpha = 0)
+
+
+ridge_pred_full <- predict (ridge_fit_full, type="coefficients", s= ridge_best_labmda)
+```
+
+
+
+
 Here is a table of the coefficients we get after fitting the models:
 
 ```{r, echo=FALSE}
 suppressMessages(library(xtable))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
+
 
 v <-as.vector(ols$coefficients)[-c(1)]
 w <-as.vector(ridge_pred_full)[-c(1,2)]
@@ -40,11 +169,7 @@ This is a graphical representation of the coefficients:
 
 ```{r, echo=FALSE}
 suppressMessages(library(ggplot2))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
+
 
 v <-as.vector(ols$coefficients)[-c(1)]
 w  <-append(v, as.vector(ridge_pred_full)[-c(1,2)],
@@ -85,10 +210,6 @@ Here are the MSE's of each regression:
 
 ```{r, echo=FALSE}
 suppressMessages(library(xtable))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
 
 names(ridge_mse)<-"MSE"
 names(lasso_mse)<-"MSE"
