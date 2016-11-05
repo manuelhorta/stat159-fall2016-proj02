@@ -9,7 +9,7 @@
 }
 </style>
 
-slides
+Project 2 Slides
 ========================================================
 author: Jared Wilber, Austin Carango, Manuel Horta
 date: October 28, 2016
@@ -92,3 +92,7 @@ the selected components are associated with the dependent variable
 Conclusions
 ========================================================
 
+- There are multiple techniques for regression
+- Each technique has its own strengths
+- Each technique has its own weaknesses
+- Different situations call for different regression techniques
