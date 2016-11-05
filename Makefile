@@ -1,3 +1,6 @@
+D = data
+CS = code/scripts
+
 .PHONY: all eda regression session tests report clean data 
 
 # all	
@@ -5,10 +8,10 @@ all: eda regression report preproc pcr plsr ridge lasso
 
 # data downloads Credit dataset
 data: 
-	 curl -o data/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv
+	 curl -o $@/Credit.csv http://www-bcf.usc.edu/~gareth/ISL/Credit.csv
 
 # Runs data prprocessing script
-preproc: data code/scripts
+preproc: $(D) code/scripts
 	Rscript -e 'source("code/scripts/data-preprocess.R")'
 
 ols:
@@ -40,13 +43,13 @@ tests:
 	Rscript -e 'source("code/tests/test-regressions.R")'
 
 session:
-	bash session.sh
+	bash $@.sh
 
+report: report/report.Rmd
+	Rscript -e 'rmarkdown::render("report/report.Rmd")'
 
 slides: slides/slides.Rmd
 	Rscript -e 'rmarkdown::render("slides/slides.Rmd")'
 
-	
-# Clean output file
 clean:
 	rm -f report/report.pdf
