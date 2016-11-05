@@ -43,9 +43,8 @@ session:
 	bash session.sh
 
 
-# report
-# slides
-
+slides: slides/slides.Rmd
+	Rscript -e 'rmarkdown::render("slides/slides.Rmd")'
 
 	
 # Clean output file
