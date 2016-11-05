@@ -1,12 +1,8 @@
 ---
+title: Predictive Modeling Process
 output: pdf_document
+author: Austin Carango, Manuel Horta, Jared Wilber
 ---
-
-## Abstract
-
-The idea of this project is to perform a predictive modeling process on the Credit data set. This dataset reports credit card balance, credit score, income, age , gender, etc. for 400 people. This data is freely available ass a CSV file at [http://www-bcf.usc.edu/~gareth/ISL/Credit.csv](http://www-bcf.usc.edu/~gareth/ISL/Credit.csv). The methods discused are primarily based on chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al), which is freely available at http://www-bcf.usc.edu/~gareth/ISL/ISLR%20First%20Printing.pdf.
-
-
 
 ## Introduction
 
@@ -15,7 +11,6 @@ Given a data set containing information pertaining to credit card balances and o
 To answer this question, the following paper will discuss several different regression methods used in the predictive modeling process. The specific methods discussed are: OLS, ridge, LASSO, PCA, and PLS. Each method will be discussed and applied separately to the Credit data. More information regarding these methods is available in sections 6.2, 6.3, 6.6, and 6.7 of chapter 6: Linear Model Selection and Regularization (from " _An Introduction to Statistical Learning_" by James et al).
 
 We will attempt to model credit card balance as a function of 10 variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, and `Ethnicity`. Because we are modelling this relationship via linear regression, we are inherently assuming that a linear relationship exists between our dependent variables and independent variable. We will run a total of five regressions: one for each regression method.
-
 
 ## Data
 
@@ -28,8 +23,6 @@ For this paper, we will use the following variables: `Income`, `Limit`, `Rating`
 In our analysis, we will treat `Balance` as the dependent variable and the other 10 variables of interest as the independent variables. When fitting the models, however, we factorized the categorical data, transforming `Gender`, `Student`, `Married`, and `Ethnicity` into `GenderFemale`, `StudentYes`, `MarriedYes`, `EthnicityCaucasian` and `EthnicityAsian`. Thus we have 11 independent variables in the models when fitting the models.
 
 
-
-
 ## Methods
 
 6.2 Shrinkage Methods:
@@ -38,11 +31,12 @@ In our analysis, we will treat `Balance` as the dependent variable and the other
   3. Ridge vs Lasso
   4. Special case
   5. Selecting parameter
-6.3
-  1. Principal Components Regression
-    1.1 PCA
-    1.2 Regression on PCA
-  2. Partial Least Squares
+  
+6.3 Dimension Reduction Methods:     
+  1. Principal Components Regression  
+    1.1 PCA    
+    1.2 Regression on PCA  
+  2. Partial Least Squares  
   
   
   
@@ -71,9 +65,9 @@ $$ RSS = \sum_{i=1}^n (y_i - \beta_0 - \beta_1x_i)^2 + \sum{i=1}^n (\beta_i)^2$$
   
 This is the new equation that we minimize to find our coefficients. In effect, this quantity allows our regression model to predict observations that have more generalizability. 
 
-As with OLS, the above minimization equation hope to find the $\beta$ coefficients that best fit the data. The additional parameter, the $\lambda$ paramater, i known as the _shrinkage_ parameter. It becomes small when the $\beta$ coefficients are almost zero, hence the term _shrinkage_. To control the relative impact each of the two term in our new model has on our coefficient estimates, we use the parameter $\lambda$. When $\lambda = 0$, our equation simplifies to the original $RSS$. When $\lambda to inf$, the impact of the shrinkage parameter gets stronger, making our coefficient approach 0. Thus, our coefficient estimates vary as we tweak $\lambda$. Note, also, that this shrinkage parameter is not applied to our intercept term, as the goal of the minimization is to shrink the association between our predictors and the response.
+As with OLS, the above minimization equation hope to find the $\beta$ coefficients that best fit the data. The additional parameter, the $\lambda$ parameter, i known as the _shrinkage_ parameter. It becomes small when the $\beta$ coefficients are almost zero, hence the term _shrinkage_. To control the relative impact each of the two term in our new model has on our coefficient estimates, we use the parameter $\lambda$. When $\lambda = 0$, our equation simplifies to the original $RSS$. When $\lambda to inf$, the impact of the shrinkage parameter gets stronger, making our coefficient approach 0. Thus, our coefficient estimates vary as we tweak $\lambda$. Note, also, that this shrinkage parameter is not applied to our intercept term, as the goal of the minimization is to shrink the association between our predictors and the response.
 
-So why is any of this important? Why don't we just continue employing original least squares for analysis if it works? The primary advantage of ridge regression over least squares is a result of the bias-variance trade-off, which plays into ridge regression as follows: increasing $\lamba$ decreases the variance of our model but increases the bias. Decreasing $\lamba$ increases the variance while decreasing the bias. Because original least squares uses $\lambda = 0$, it has a high variance with no bias. Therefore, at the expense of a slight increase in bias we can substantially reduce the the variance in the predictions. This shrinking of coefficient values disallows the opportunity for one predictor to have too strong an effect on our model. This helps to curb overfitting and leads to a more accurate, generalizable model.
+So why is any of this important? Why don't we just continue employing original least squares for analysis if it works? The primary advantage of ridge regression over least squares is a result of the bias-variance trade-off, which plays into ridge regression as follows: increasing $\lambda$ decreases the variance of our model but increases the bias. Decreasing $\lambda$ increases the variance while decreasing the bias. Because original least squares uses $\lambda = 0$, it has a high variance with no bias. Therefore, at the expense of a slight increase in bias we can substantially reduce the the variance in the predictions. This shrinking of coefficient values disallows the opportunity for one predictor to have too strong an effect on our model. This helps to curb overfitting and leads to a more accurate, generalizable model.
 
 Additionally, least squares estimates is a very poor strategy for the case when the number of features is greater than the number of observations ($p > n$), whereas ridge will still perform well by trading variance for bias. Ridge regression is also more computationally efficient than subset selection methods, as only a single model fit is necessary.
 
@@ -119,28 +113,341 @@ As with PCA regression, PLS regression first reduces the dimensions of the data 
 In PLS, we directly utilize the simple regression coefficient for each variable, as this coefficient is proportionally correlated to the response value. For this reason, PLS will place the highest weight on variables that are most strongly related to the response value. We continue selecting directions by iteratviely carrying out the following procedure: regress each variable on the former direction, then use the residuals to find the next direction.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## Analysis
 
-```{r, echo=FALSE}
-suppressMessages(library(xtable))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
+  In this section we will show the processes used to perform each of the five regression methods: Ordinary Least Squares, Ridge regression, LASSO, PCR, and PLS. We will also display plots for each regression.
+  Each regression model was fitted on the training data and we identified the best model. Using this best model we fit it again on the testing data and calculated the MSE value. Finally, we fit the best model again on the entire dataset for comparison. Before running these regressions, we factorized categorical variables and then standardized the data. 
+
+
+### OLS Regression
+
+```{r, eval=F, echo=T}
+
+# Fit Model
+
+ols<-lm(Balance~Income+Limit+Rating+Cards+Age+Education
+        +GenderFemale+StudentYes+MarriedYes+EthnicityAsian
+        +EthnicityCaucasian, 
+        data=as.data.frame(scaled_credit))
+
+summary_ols <- summary(ols)
+mse_ols <- mean(ols$residuals^2)
+
+sink(file = "data/model-results/ols-results.txt")
+summary_ols
+paste("MSE")
+mse_ols
+sink()
+
+save(ols, summary_ols, mse_ols, 
+     file ='data/ols-saved-objects.Rdata')
+```
+
+![](../../images/ols_plots.png)
+
+### Ridge Regression
+
+```{r eval = F, echo = T}
+
+library(glmnet)
+set.seed(1)
+
+# Fit Model
+
+ridge_mod <- cv.glmnet(x, y, intercept = FALSE, standardize = FALSE, lambda = grid, alpha = 0)
+
+# Find best model
+
+ridge_best_labmda <- ridge_mod$lambda.min
+
+# Find MSE on test set
+
+ridge_pred <- predict(ridge_mod,
+                      s= ridge_best_labmda,
+                      newx= model.matrix(Balance ~ ., data = data.frame(credit_test)))
+
+ridge_mse <- mean((ridge_pred - credit_test[,12])^2)
+
+# Refit on full dataset
+
+ridge_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
+                            data.frame(scaled_credit)$Balance, 
+                            intercept = FALSE,
+                            standardize = FALSE,
+                            alpha = 0)
+
+
+```
+
+![](../../images/ridge_validation_plot.png)
+
+### LASSO Regression
+
+```{r eval = F, echo = T}
+
+library(glmnet)
+set.seed(1)
+
+# Fit Model
+
+grid = 10^seq(10, -2, length = 100)
+
+set.seed(1)
+
+x <- model.matrix(Balance ~ ., data = data.frame(credit_train))
+y <- data.frame(credit_train)$Balance
+
+lasso_mod <- cv.glmnet(x, y, intercept=FALSE, standardize=FALSE, lambda = grid, alpha=1)
+summary(lasso_mod)
+
+
+lasso_best_mod <- lasso_mod$lambda.min
+
+# Preditct and MSE
+
+lasso_pred <- predict(lasso_mod, s = lasso_best_mod, 
+                      newx= model.matrix(Balance ~ ., data = data.frame(credit_test)))
+lasso_mse <- mean((lasso_pred - credit_test[,12])^2)
+
+# Refit on full dataset
+
+lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
+                            data.frame(scaled_credit)$Balance,
+                            intercept = FALSE,
+                            standardize = FALSE, 
+                            alpha=1)
+
+
+(lasso_pred_full <- predict (lasso_fit_full, type="coefficients", s = lasso_best_mod))
+
+```
+
+![](../../images/lasso_validation_plot.png)
+
+### Principal Components Regression
+
+```{r eval = F, echo = T}
+
+library(pls)
+set.seed(1)
+
+# Fit Model
+
+pcr_fit=pcr(Balance ~ ., 
+             data = data.frame(credit_train),
+             scale = FALSE,
+             validation = "CV")
+summary(pcr_fit)
+
+# Find number of components with best fit
+
+best_mod_comp_pcr <- which.min(pcr_fit$validation$PRESS) # 10
+#save(best_mod_comp_pcr, file = "data/pcr_best_model_component.RData")
+
+# Predict and MSE
+
+pcr_pred = predict(pcr_fit, 
+                   credit_test[,-12],
+                   ncomp = best_mod_comp_pcr)
+
+pcr_mse <- mean((pcr_pred - credit_test[,12])^2)
+#save(pcr_mse, file = "data/pcr_mse.RData")
+
+# Refit on full dataset & get coefficients
+
+pcr_fit_full <- pcr(Balance ~ .,
+                     data = data.frame(scaled_credit),
+                     scale = FALSE, 
+                     ncomp = best_mod_comp_pcr)
+
+pcr_full_coefs <- coefficients(pcr_fit_full)
+
+```
+
+![](../../images/pcr_validation_plot.png)
+
+### PLS Regression
+
+```{r eval = F, echo = T}
+
+library(pls)
+set.seed(1)
+
+# Fit Model
+
+pls_fit=plsr(Balance ~ ., 
+             data = data.frame(credit_train),
+             scale = FALSE,
+             validation = "CV")
+summary(pls_fit)
+
+# Find number of components with best fit
+
+best_mod_comp_pls <- which.min(pls_fit$validation$PRESS)
+
+# Predict and MSE
+
+pls_pred = predict(pls_fit, 
+                   credit_test[,-12],
+                   ncomp = best_mod_comp_pls)
+
+
+pls_mse <- mean((pls_pred - credit_test[,12])^2)
+
+# Refit on full dataset
+
+pls_fit_full <- plsr(Balance ~ .,
+                     data = data.frame(scaled_credit),
+                     scale = FALSE, 
+                     ncomp = 5)
+
+pls_full_coefs <- coefficients(pls_fit_full)
+
+```
+
+![](../../images/pls_validation_plot.png)
+
+
+# Results
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+set.seed(1)
+
+credit <- read.csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv")
+credit <- credit[,c(2:12)]
+
+temp_credit <- model.matrix(Balance ~ ., data = credit)
+new_credit <- cbind(temp_credit[ ,-1], Balance = credit$Balance)
+
+scaled_credit <- scale(new_credit, center = TRUE, scale = TRUE)
+#write.csv(scaled_credit, file = "data/scaled-credit.csv")
+
+set.seed(1)
+
+train_indices <- sample(1:400,300)
+test_indices <- which(!(c(1:400) %in% train_indices))
+
+credit_train <- scaled_credit[train_indices,]
+credit_test  <- scaled_credit[-train_indices,]
+
+suppressMessages(library(glmnet))
+
+grid = 10^seq(10, -2, length = 100)
+
+set.seed(1)
+
+x <- model.matrix(Balance ~ ., data = data.frame(credit_train))
+y <- data.frame(credit_train)$Balance
+
+lasso_mod <- cv.glmnet(x, y, intercept=FALSE, standardize=FALSE, lambda = grid, alpha=1)
+
+lasso_best_mod <- lasso_mod$lambda.min
+
+lasso_pred <- predict(lasso_mod, s = lasso_best_mod, newx= model.matrix(Balance ~ ., data = data.frame(credit_test)))
+
+lasso_mse <- mean((lasso_pred - credit_test[,12])^2)
+
+lasso_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
+                            data.frame(scaled_credit)$Balance,
+                            intercept = FALSE,
+                            standardize = FALSE, 
+                            alpha=1)
+
+lasso_pred_full <- predict (lasso_fit_full, type="coefficients", s = lasso_best_mod)
+
+ols<-lm(Balance~Income+Limit+Rating+Cards+Age+Education
+        +GenderFemale+StudentYes+MarriedYes+EthnicityAsian
+        +EthnicityCaucasian, 
+        data=as.data.frame(scaled_credit))
+
+summary_ols <- summary(ols)
+mse_ols <- mean(ols$residuals^2)
+
+suppressMessages(library(pls))
+set.seed(1)
+
+pcr_fit=pcr(Balance ~ ., 
+             data = data.frame(credit_train),
+             scale = FALSE,
+             validation = "CV")
+
+best_mod_comp_pcr <- which.min(pcr_fit$validation$PRESS)
+
+pcr_pred = predict(pcr_fit, 
+                   credit_test[,-12],
+                   ncomp = best_mod_comp_pcr)
+
+pcr_mse <- mean((pcr_pred - credit_test[,12])^2)
+
+pcr_fit_full <- pcr(Balance ~ .,
+                     data = data.frame(scaled_credit),
+                     scale = FALSE, 
+                     ncomp = best_mod_comp_pcr)
+                     
+pcr_full_coefs <- coefficients(pcr_fit_full)
+
+set.seed(1)
+
+pls_fit=plsr(Balance ~ ., 
+             data = data.frame(credit_train),
+             scale = FALSE,
+             validation = "CV")
+             
+best_mod_comp_pls <- which.min(pls_fit$validation$PRESS)
+
+pls_pred = predict(pls_fit, 
+                   credit_test[,-12],
+                   ncomp = best_mod_comp_pls)
+
+
+pls_mse <- mean((pls_pred - credit_test[,12])^2)
+
+pls_fit_full <- plsr(Balance ~ .,
+                     data = data.frame(scaled_credit),
+                     scale = FALSE, 
+                     ncomp = 5)
+
+pls_full_coefs <- coefficients(pls_fit_full)
+
+set.seed(1)
+
+grid <- 10^seq(10, -2, length = 100)
+
+set.seed(1)
+x <- model.matrix(Balance ~ ., data = data.frame(credit_train))
+y <- data.frame(credit_train)$Balance
+
+ridge_mod <- cv.glmnet(x, y, intercept = FALSE, standardize = FALSE, lambda = grid, alpha = 0)
+
+
+ridge_best_labmda <- ridge_mod$lambda.min
+
+ridge_pred <- predict(ridge_mod,
+                      s= ridge_best_labmda,
+                      newx= model.matrix(Balance ~ ., data = data.frame(credit_test)))
+
+ridge_mse <- mean((ridge_pred - credit_test[,12])^2)
+
+ridge_fit_full <- cv.glmnet(model.matrix(Balance ~ .,data = data.frame(scaled_credit)),
+                            data.frame(scaled_credit)$Balance, 
+                            intercept = FALSE,
+                            standardize = FALSE,
+                            alpha = 0)
+
+
+ridge_pred_full <- predict (ridge_fit_full, type="coefficients", s= ridge_best_labmda)
+```
+
+
+
+
+This table reports the coefficients we get after fitting the models:
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+suppressWarnings(library(tables))
 
 v <-as.vector(ols$coefficients)[-c(1)]
 w <-as.vector(ridge_pred_full)[-c(1,2)]
@@ -164,36 +471,19 @@ y_name <- "PCR"
 z_name <- "PLS"
 df <- data.frame(v,w,x,y,z)
 names(df)<-c(v_name,w_name,x_name,y_name,z_name)
-coef_tbbl<-xtable(df, type="latex")
+coef_tbbl<-as.tabular(df)
 print(coef_tbbl)
 ```
 
-```{r echo=FALSE}
-suppressMessages(library(xtable))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
 
-names(mse_ols)<-"MSE"
-names(ridge_mse)<-"MSE"
-names(lasso_mse)<-"MSE"
-names(pcr_mse)<-"MSE"
-names(pls_mse)<-"MSE"
-mse_df<-data.frame(mse_ols,ridge_mse,lasso_mse,pcr_mse,pls_mse)
-names(mse_df)<-c("OLS","Ridge", "LASSO","PCR","PLS")
-mse_tbbl<-xtable(mse_df,type="latex")
-print(mse_tbbl)
-```
 
-```{r, echo=FALSE}
+This is a graphical representation of the coefficients:
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 suppressMessages(library(ggplot2))
-load("data/Ridge-saved-objects.Rdata")
-load("data/lasso-saved-objects.Rdata")
-load("data/ols-saved-objects.Rdata")
-load("data/pcr-saved-objects.Rdata")
-load("data/pls-saved-objects.Rdata")
+
 
 v <-as.vector(ols$coefficients)[-c(1)]
 w  <-append(v, as.vector(ridge_pred_full)[-c(1,2)],
@@ -228,41 +518,36 @@ ggplot(data=coeff_df,aes(x=Variable,y=CoefficientValue))+
   geom_bar(stat = "identity")+
   facet_wrap(~Model)+
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
 ```
-  6.6
-  6.7
-  
-## Results
 
-  List results of analysis
+Here are the MSE's of each regression:
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+names(ridge_mse)<-"MSE"
+names(lasso_mse)<-"MSE"
+names(pcr_mse)<-"MSE"
+names(pls_mse)<-"MSE"
+mse_df<-data.frame(ridge_mse,lasso_mse,pcr_mse,pls_mse)
+names(mse_df)<-c("Ridge", "LASSO","PCR","PLS")
+mse_tbbl<-as.tabular(mse_df)
+print(mse_tbbl)
+```
+
   
   For our analysis, 
   
-  OLS fit resulted in an MSE of ≈ 0.0448.
+  Ridge Regression, with 11 components, resulted in an MSE of `r ridge_mse` 
   
-  Ridge performed best with 11 components. The full model fit with this number of components resulted in an MSE of ≈ 0.0454
-
-  LASSO performed best with 7 components. The full model fit with this number of components resulted in an MSE of ≈ 0.0468
+  LASSO performed best with 7 components. The full model fit with this number of components resulted in an MSE of `r lasso_mse`
   
-  Principal Components Regression performed best with 11 components. The model fit with this number of components resulted in an MSE of ≈ 0.046
+  Principal Components Regression performed best with 11 components. The full model fit with this number of components resulted in an MSE of `r pcr_mse`
   
-  Partial Least Squares Regression performe best with 11 components. The model fit with this number of components resulted in an MSE of ≈ 0.0467
+  Partial Least Squares Regression performe best with 11 components. The model fit with this number of components resulted in an MSE of `r pls_mse`
 
-Thus, our best performing model, with an MSE of ≈ 0.0448, is the OLS Regression model. 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+min_mse_vec <- c(ridge_mse,lasso_mse,pcr_mse,pls_mse)
+names(min_mse_vec)<-c("Ridge","LASSO","PCR","PLS")
+```
 
-Why is it that original least squares performed better than our other, more complicated methods? The four methods we discussed each have particular use-cases. For example, in cases where the data has a large number of variables, high colliniearity, or a we are seeking a sparse solution, the above techniques will work well. As these aren't necessarily what we're looking for with the Credit data, it's not very surprising that the strong method that is original least squares would perform well.
-
-
-## Conclusion
-
-Given a data set containing information pertaining to credit card balances and other factors such as income, race and gender, how could one develop a model to predict one's credit card balance?
-
-The above analysis answered this question via a predictive modeling process that discussed several different regression methods. Specifically, the analysis utilized OLS, ridge, LASSO, PCA, and PLS regressions. Each method was discussed and applied separately to the Credit data, where credict card `Balance` was modeled as a function of 10 variables: `Income`, `Limit`, `Rating`, `Cards`, `Age`, `Education`, `Gender`, `Student`, `Married`, and `Ethnicity`.
-
-Our results yielded different scores, with 
-
-That said, all of our models performed well. Thus, regression techniques work well when you have multiple predictors, a continuous response type, and assume a linear relationship between the response and predictors. Different regression techniques exist with different strengths and weaknesses.
-
-
-
+Thus, our best performing model, with an MSE of `r min(min_mse_vec)`, is `r names(which.min(min_mse_vec))`. 
