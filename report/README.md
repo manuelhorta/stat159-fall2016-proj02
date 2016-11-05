@@ -1,5 +1,9 @@
 #This folder contains the following folders and files:
 
+**report.Rmd**
+
+Description: Final report created by merging the following section files. 
+
 ##sections/  
 
 **00-abstract.Rmd** 
@@ -29,3 +33,4 @@ Description: Results of the analysis.
 **06-conclusions.Rmd**   
 
 Description: Conclusions from the results, man. 
+
